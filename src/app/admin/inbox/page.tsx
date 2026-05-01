@@ -5,7 +5,7 @@ import {
   useMarkMessageRead,
   useDeleteMessage,
 } from "@/hooks/useAdminData";
-import InboxTab from "@/components/admin/InboxTab";
+import InboxTab from "@/components/admin/inbox/InboxTab";
 
 export default function AdminInboxPage() {
   const { data: messages = [], isLoading } = useMessages();

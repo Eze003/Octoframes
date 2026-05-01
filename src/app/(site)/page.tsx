@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import HeroSection from "@/components/sections/HeroSection";
-import MotionSection from "@/components/sections/MotionSection";
-import BrandsSection from "@/components/sections/BrandsSection";
-import PartnersSection from "@/components/sections/PartnersSection";
+import HeroSection from "@/app/(site)/_components/HeroSection";
+import MotionSection from "@/app/(site)/_components/MotionSection";
+import BrandsSection from "@/app/(site)/_components/BrandsSection";
+import PartnersSection from "@/app/(site)/_components/PartnersSection";
 import FAQSection from "@/components/sections/FAQSection";
 import CTASection from "@/components/sections/CTASection";
 

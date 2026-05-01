@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { NAVIGATION_ITEMS } from "@/constants/navigation";
-import Button from "../ui/Button";
+import Button from "@/components/ui/Button";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();

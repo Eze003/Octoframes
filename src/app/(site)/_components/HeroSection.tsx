@@ -2,9 +2,9 @@
 
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useEffect } from "react";
-import Button from "../ui/Button";
-import InfiniteCarousel from "../ui/InfiniteCarousel";
-import VideoTab from "../ui/VideoTab";
+import Button from "@/components/ui/Button";
+import InfiniteCarousel from "@/components/ui/InfiniteCarousel";
+import VideoTab from "@/components/ui/VideoTab";
 
 export default function HeroSection() {
   return (

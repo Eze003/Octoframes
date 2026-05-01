@@ -1,5 +1,5 @@
-import ContactHeroSection from "@/components/sections/ContactHeroSection";
-import ContactFormSection from "@/components/sections/ContactFormSection";
+import ContactHeroSection from "@/app/(site)/contact/_components/ContactHeroSection";
+import ContactFormSection from "@/app/(site)/contact/_components/ContactFormSection";
 import FAQSection from "@/components/sections/FAQSection";
 import CTASection from "@/components/sections/CTASection";
 import type { Metadata } from "next";

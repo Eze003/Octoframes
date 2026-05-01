@@ -1,6 +1,6 @@
 "use client";
 
-import { Portfolio } from "./types";
+import { Portfolio } from "@/components/admin/types";
 import { motion } from "framer-motion";
 import Image from "next/image";
 

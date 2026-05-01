@@ -4,7 +4,7 @@ import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Button from "../ui/Button";
+import Button from "@/components/ui/Button";
 import { NAVIGATION_ITEMS } from "@/constants/navigation";
 
 export default function Header() {

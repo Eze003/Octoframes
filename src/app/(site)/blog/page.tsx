@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import BlogHeroSection from "@/components/sections/BlogHeroSection";
-import BlogGridSection from "@/components/sections/BlogGridSection";
+import BlogHeroSection from "@/app/(site)/blog/_components/BlogHeroSection";
+import BlogGridSection from "@/app/(site)/blog/_components/BlogGridSection";
 import CTASection from "@/components/sections/CTASection";
 
 export const metadata: Metadata = {

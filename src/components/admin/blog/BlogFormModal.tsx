@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Blog } from "./types";
-import MediaUpload from "./MediaUpload";
+import { Blog } from "@/components/admin/types";
+import MediaUpload from "@/components/admin/MediaUpload";
 import Image from "next/image";
 
 interface BlogFormModalProps {

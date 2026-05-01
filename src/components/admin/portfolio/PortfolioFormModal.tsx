@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { motion, Reorder } from "framer-motion";
-import { Portfolio, ContentItem } from "./types";
-import MediaUpload from "./MediaUpload";
+import { Portfolio, ContentItem } from "@/components/admin/types";
+import MediaUpload from "@/components/admin/MediaUpload";
 import Image from "next/image";
 
 interface PortfolioFormModalProps {
@@ -342,7 +342,7 @@ export default function PortfolioFormModal({
                     {!item.src ? (
                       <MediaUpload 
                         label="Upload" 
-                        type={item.type}
+                        type={item.type as "image" | "video" | "gif"}
                         onUpload={(url) => updateContentItem(i, { src: url })} 
                       />
                     ) : (

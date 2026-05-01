@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Portfolio } from "./types";
-import PortfolioCard from "./PortfolioCard";
-import PortfolioFormModal from "./PortfolioFormModal";
-import PortfolioSkeleton from "./skeletons/PortfolioSkeleton";
+import { Portfolio } from "@/components/admin/types";
+import PortfolioCard from "@/components/admin/portfolio/PortfolioCard";
+import PortfolioFormModal from "@/components/admin/portfolio/PortfolioFormModal";
+import PortfolioSkeleton from "@/components/admin/portfolio/skeletons/PortfolioSkeleton";
 
 interface PortfolioTabProps {
   portfolios: Portfolio[];

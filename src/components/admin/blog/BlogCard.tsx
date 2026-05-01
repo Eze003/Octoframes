@@ -1,6 +1,6 @@
 "use client";
 
-import { Blog } from "./types";
+import { Blog } from "@/components/admin/types";
 import { motion } from "framer-motion";
 import Image from "next/image";
 

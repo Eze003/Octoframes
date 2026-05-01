@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Message } from "./types";
-import MessageListItem from "./MessageListItem";
-import MessageDetail from "./MessageDetail";
-import InboxSkeleton from "./skeletons/InboxSkeleton";
+import { Message } from "@/components/admin/types";
+import MessageListItem from "@/components/admin/inbox/MessageListItem";
+import MessageDetail from "@/components/admin/inbox/MessageDetail";
+import InboxSkeleton from "@/components/admin/inbox/skeletons/InboxSkeleton";
 
 interface InboxTabProps {
   messages: Message[];
