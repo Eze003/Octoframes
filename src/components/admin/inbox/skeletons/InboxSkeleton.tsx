@@ -1,6 +1,6 @@
 "use client";
 
-import SkeletonBlock from "./SkeletonBlock";
+import SkeletonBlock from "@/components/admin/skeletons/SkeletonBlock";
 
 /** Skeleton for a single message list item in the inbox sidebar */
 function MessageItemSkeleton() {

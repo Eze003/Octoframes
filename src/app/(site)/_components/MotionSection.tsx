@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import TextReveal from "../ui/TextReveal";
+import TextReveal from "@/components/ui/TextReveal";
 
 const services = [
   {

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import PortfolioHeroSection from "@/components/sections/PortfolioHeroSection";
-import PortfolioGridSection from "@/components/sections/PortfolioGridSection";
+import PortfolioHeroSection from "@/app/(site)/portfolio/_components/PortfolioHeroSection";
+import PortfolioGridSection from "@/app/(site)/portfolio/_components/PortfolioGridSection";
 import CTASection from "@/components/sections/CTASection";
 import FAQSection from "@/components/sections/FAQSection";
 

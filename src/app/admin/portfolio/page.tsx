@@ -1,7 +1,7 @@
 "use client";
 
 import { usePortfolios, useDeletePortfolio } from "@/hooks/useAdminData";
-import PortfolioTab from "@/components/admin/PortfolioTab";
+import PortfolioTab from "@/components/admin/portfolio/PortfolioTab";
 
 export default function AdminPortfolioPage() {
   const { data: portfolios = [], isLoading, refetch } = usePortfolios();

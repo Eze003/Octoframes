@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Button from "../ui/Button";
-import TextReveal from "../ui/TextReveal";
+import Button from "@/components/ui/Button";
+import TextReveal from "@/components/ui/TextReveal";
 
 export default function AboutSection() {
   return (

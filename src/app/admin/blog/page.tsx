@@ -1,7 +1,7 @@
 "use client";
 
 import { useBlogs, useDeleteBlog } from "@/hooks/useAdminData";
-import BlogTab from "@/components/admin/BlogTab";
+import BlogTab from "@/components/admin/blog/BlogTab";
 
 export default function AdminBlogPage() {
   const { data: blogs = [], isLoading, refetch } = useBlogs();

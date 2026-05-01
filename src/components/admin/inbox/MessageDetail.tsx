@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Message } from "./types";
+import { Message } from "@/components/admin/types";
 
 interface MessageDetailProps {
   message: Message | null;

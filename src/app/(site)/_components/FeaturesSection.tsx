@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Button from "../ui/Button";
+import Button from "@/components/ui/Button";
 
 const features = [
   { id: 1, image: "/api/placeholder/200/200" },

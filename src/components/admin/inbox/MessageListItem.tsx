@@ -1,6 +1,6 @@
 "use client";
 
-import { Message } from "./types";
+import { Message } from "@/components/admin/types";
 import { motion } from "framer-motion";
 
 interface MessageListItemProps {

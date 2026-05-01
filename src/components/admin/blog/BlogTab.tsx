@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Blog } from "./types";
-import BlogCard from "./BlogCard";
-import BlogFormModal from "./BlogFormModal";
-import PortfolioSkeleton from "./skeletons/PortfolioSkeleton"; // Reusing the same skeleton pattern
+import { Blog } from "@/components/admin/types";
+import BlogCard from "@/components/admin/blog/BlogCard";
+import BlogFormModal from "@/components/admin/blog/BlogFormModal";
+import PortfolioSkeleton from "@/components/admin/portfolio/skeletons/PortfolioSkeleton"; // Reusing the same skeleton pattern
 import Image from "next/image";
 
 interface BlogTabProps {

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+// @ts-ignore
 import { Vimeo } from "@vimeo/vimeo";
 
 const client = new Vimeo(
@@ -11,7 +12,7 @@ export async function POST(req: NextRequest) {
   try {
     const { fileName, fileSize, title, description } = await req.json();
 
-    return new Promise((resolve) => {
+    return new Promise<NextResponse>((resolve) => {
       client.request(
         {
           method: "POST",
@@ -29,7 +30,7 @@ export async function POST(req: NextRequest) {
             },
           },
         },
-        (error, body, statusCode, headers) => {
+        (error: any, body: any, statusCode: number, headers: any) => {
           if (error) {
             console.error("Vimeo API Error:", error);
             return resolve(

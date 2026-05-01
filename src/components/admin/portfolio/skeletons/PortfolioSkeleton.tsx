@@ -1,6 +1,6 @@
 "use client";
 
-import SkeletonBlock from "./SkeletonBlock";
+import SkeletonBlock from "@/components/admin/skeletons/SkeletonBlock";
 
 /** Skeleton for a single portfolio card in the grid */
 function PortfolioCardSkeleton() {
