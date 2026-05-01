@@ -52,6 +52,7 @@ export default function FAQSection() {
           src="/faq.png" 
           alt="FAQ Background" 
           fill 
+          priority
           className="object-cover"
         />
         {/* Primary Color Tint Overlay */}

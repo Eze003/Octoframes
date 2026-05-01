@@ -52,13 +52,20 @@ export default function ContactHeroSection() {
           </p>
         </motion.div>
 
-        {/* Single CTA Button */}
+        {/* Single CTA Button with Bridge Glow */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
-          className="relative z-10 flex justify-center items-center mb-8"
+          className="relative z-20 flex flex-row gap-4 justify-center items-center mb-10"
         >
+          {/* The Bridge Glow - More Vibrant Gradient */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-b from-primary-500/45 via-primary-500/15 to-transparent blur-[100px] -z-10 pointer-events-none" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[300px] bg-gradient-to-b from-primary-400/20 to-transparent blur-[60px] -z-10 pointer-events-none" />
+          
+          {/* Tight edge glow around bottom/sides of buttons */}
+          <div className="absolute -inset-x-6 -bottom-6 top-1/2 bg-primary-500/15 blur-[40px] rounded-full -z-10" />
+
           <Button variant="primary" size="lg" onClick={handleScroll}>
             Fill The Form Out!
           </Button>
@@ -67,7 +74,7 @@ export default function ContactHeroSection() {
       </div>
 
       {/* Form Section - matched exactly to Header width */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-30 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ContactFormSection />
       </div>
 

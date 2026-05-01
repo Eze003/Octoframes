@@ -25,7 +25,7 @@ export default function CTASection() {
               opacity: [0.7, 1, 0.7],
             }}
             transition={{
-              duration: 2,
+              duration: 8,
               repeat: Infinity,
               ease: "easeInOut",
             }}

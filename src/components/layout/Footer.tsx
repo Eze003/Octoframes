@@ -9,84 +9,22 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-black pt-28 pb-6 overflow-hidden border-t-2 border-white/[0.08]">
-      {/* 1. The 'Straight' Vertical Source Core - Balanced */}
+    <footer
+      className="relative pt-24 pb-10 overflow-hidden border-t border-gray-800"
+      style={{
+        background:
+          "conic-gradient(at 50% 0%, rgb(0, 0, 0) 90deg, rgba(234, 116, 54, 0.4) 181.299deg, rgb(0, 0, 0) 270deg)",
+      }}
+    >
+      {/* Faint Bottom Ambient Glow */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[2px] h-[60%] pointer-events-none z-10"
+        className="absolute bottom-0 left-0 right-0 h-[40%] pointer-events-none z-0"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(236,146,82,1) 0%, rgba(234,116,54,0.8) 40%, transparent 100%)",
-          filter: "blur(8px)",
-        }}
-      />
-
-      {/* 1.1 Symmetrical 'Shadow' Rays flanking the straight core */}
-      <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-[80%] pointer-events-none z-0 overflow-hidden"
-        style={{
-          background: `
-            conic-gradient(
-              from 0deg at 50% 0%, 
-              transparent 170deg, 
-              rgba(20,10,60,0.6) 176deg, 
-              transparent 178deg,
-              transparent 182deg,
-              rgba(20,10,60,0.6) 184deg, 
-              transparent 190deg
-            )
-          `,
-          filter: "blur(15px)",
-        }}
-      />
-
-      {/* 1.2 Faint Textured Shadows - Adding depth to the top beam */}
-      <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none z-0 overflow-hidden"
-        style={{
-          background: `
-            conic-gradient(
-              from 0deg at 50% 0%,
-              transparent 140deg,
-              rgba(0,0,0,0.95) 160deg,
-              transparent 170deg,
-              rgba(0,0,0,0.9) 178deg,
-              transparent 180deg,
-              rgba(0,0,0,0.9) 182deg,
-              transparent 190deg,
-              rgba(0,0,0,0.95) 200deg,
-              transparent 220deg
-            )
-          `,
-          filter: "blur(25px)",
-          opacity: 1,
-        }}
-      />
-
-      {/* 2. The Spreading Atmospheric Beam - Balanced Spread */}
-      <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none z-0 overflow-hidden"
-        style={{
-          background: `
-            conic-gradient(
-              from 0deg at 50% 0%, 
-              transparent 100deg, 
-              rgba(234,116,54,0.2) 180deg, 
-              transparent 260deg
-            )
-          `,
-          filter: "blur(120px)",
-        }}
-      />
-
-      {/* Intense Bottom Corner Spread - Wide Reach */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-[85%] pointer-events-none z-0"
-        style={{
-          background:
-            "radial-gradient(ellipse at 50% 100%, rgba(234,116,54,0.25) 0%, transparent 100%)",
-          maskImage: "linear-gradient(to bottom, transparent 0%, black 25%)",
+            "radial-gradient(ellipse at 50% 100%, rgba(234,116,54,0.08) 0%, transparent 100%)",
+          maskImage: "linear-gradient(to bottom, transparent 0%, black 50%)",
           WebkitMaskImage:
-            "linear-gradient(to bottom, transparent 0%, black 25%)",
+            "linear-gradient(to bottom, transparent 0%, black 50%)",
         }}
       />
 
@@ -121,8 +59,8 @@ export default function Footer() {
           </div>
 
           {/* Template Pages Column */}
-          <div className="flex flex-col md:pl-4 lg:pl-8">
-            <h4 className="text-white font-medium mb-5 text-[16px]">
+          <div className="flex flex-col md:pl-12 lg:pl-20">
+            <h4 className="text-white font-medium mb-5 text-[18px] whitespace-nowrap">
               Template Pages
             </h4>
             <ul className="space-y-2.5">
@@ -130,7 +68,7 @@ export default function Footer() {
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-gray-400 hover:text-white transition-colors text-[16px]"
+                    className="text-gray-400 hover:text-white transition-colors text-[16px] whitespace-nowrap"
                   >
                     {item.name}
                   </Link>
@@ -139,7 +77,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/#faq"
-                  className="text-gray-400 hover:text-white transition-colors text-[14px]"
+                  className="text-gray-400 hover:text-white transition-colors text-[14px] whitespace-nowrap"
                 >
                   FAQ
                 </Link>
@@ -147,7 +85,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/#about"
-                  className="text-gray-400 hover:text-white transition-colors text-[14px]"
+                  className="text-gray-400 hover:text-white transition-colors text-[14px] whitespace-nowrap"
                 >
                   About
                 </Link>
@@ -156,14 +94,16 @@ export default function Footer() {
           </div>
 
           {/* Social Column */}
-          <div className="flex flex-col md:pl-8 lg:pl-12">
-            <h4 className="text-white font-medium mb-5 text-[16px]">Social</h4>
+          <div className="flex flex-col md:pl-20 lg:pl-32">
+            <h4 className="text-white font-medium mb-5 text-[18px] whitespace-nowrap">
+              Social
+            </h4>
             <ul className="space-y-2.5">
               {["Twitter (X)", "Instagram", "Youtube", "Framer"].map((item) => (
                 <li key={item}>
                   <a
                     href="#"
-                    className="text-gray-400 hover:text-white transition-colors text-[14px]"
+                    className="text-gray-400 hover:text-white transition-colors text-[14px] whitespace-nowrap"
                   >
                     {item}
                   </a>
@@ -174,7 +114,7 @@ export default function Footer() {
 
           {/* Subscribe Form Column */}
           <div className="flex flex-col md:pl-8 lg:pl-12">
-            <h4 className="text-white font-medium mb-5 text-[16px]">
+            <h4 className="text-white font-medium mb-5 text-[18px] whitespace-nowrap">
               Subscribe Form
             </h4>
             <div className="w-full">
