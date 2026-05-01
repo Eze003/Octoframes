@@ -15,7 +15,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="inline-flex items-center gap-3 px-3 py-1.5 glass rounded-full mb-8 shadow-[0_4px_24px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.06)]"
+          className="inline-flex items-center gap-3 px-3 py-1.5 glass rounded-full mb-8 shadow-[0_0_15px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.06)]"
         >
           <span className="px-3 py-1 bg-primary-600 text-white rounded-full text-[12px] font-bold tracking-wider">
             {new Date().getFullYear()}
@@ -54,9 +54,16 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
-          className="relative z-10 flex flex-row gap-4 justify-center items-center mb-10"
+          className="relative z-20 flex flex-row gap-4 justify-center items-center mb-10"
         >
-          <Button variant="secondary" size="lg">
+          {/* The Bridge Glow - More Vibrant Gradient */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-b from-primary-500/45 via-primary-500/15 to-transparent blur-[100px] -z-10 pointer-events-none" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[300px] bg-gradient-to-b from-primary-400/20 to-transparent blur-[60px] -z-10 pointer-events-none" />
+          
+          {/* Tight edge glow around bottom/sides of buttons */}
+          <div className="absolute -inset-x-6 -bottom-6 top-1/2 bg-primary-500/15 blur-[40px] rounded-full -z-10" />
+          
+          <Button variant="secondary" size="lg" href="/portfolio">
             See Our Work
           </Button>
           <Button variant="primary" size="lg">
@@ -66,7 +73,7 @@ export default function HeroSection() {
       </div>
 
       {/* VideoTab - matched exactly to Header width */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-30 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <VideoTab />
       </div>
 

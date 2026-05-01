@@ -15,8 +15,8 @@ export default function PortfolioPage() {
     <div className="flex flex-col w-full font-sans">
       <PortfolioHeroSection />
       <PortfolioGridSection />
-      <CTASection />
       <FAQSection />
+      <CTASection />
     </div>
   );
 }

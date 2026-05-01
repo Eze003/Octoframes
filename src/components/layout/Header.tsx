@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Button from "../ui/Button";
@@ -9,22 +9,28 @@ import { NAVIGATION_ITEMS } from "@/constants/navigation";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
+  const [scrollYState, setScrollYState] = useState(0);
+  const [hidden, setHidden] = useState(false);
   const pathname = usePathname();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const { scrollY } = useScroll();
 
-  const progress = Math.min(scrollY / 120, 1);
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() ?? 0;
+    
+    if (latest > previous && latest > 150) {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
+    setScrollYState(latest);
+  });
+
+  const progress = Math.min(scrollYState / 120, 1);
 
   const blurPx = progress * 40; // 0px → 40px
   const bgAlpha = progress * 0.6; // 0% → 60%
-  const borderAlpha = progress * 0.12; // 0% → 12%
+  const borderAlpha = 0.12; // Always show border
   const shadowAlpha = progress * 0.7;
 
   return (
@@ -42,11 +48,14 @@ export default function Header() {
             : `1px solid rgba(255, 255, 255, ${borderAlpha})`,
           boxShadow: isOpen
             ? "none"
-            : `0 2px 40px rgba(0, 0, 0, ${shadowAlpha})`,
+            : `0 0 20px rgba(0, 0, 0, ${shadowAlpha})`,
         }}
         initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        animate={{ 
+          opacity: hidden && !isOpen ? 0 : 1, 
+          y: hidden && !isOpen ? "-100%" : 0 
+        }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-[88px]">
@@ -94,7 +103,7 @@ export default function Header() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
-                <Button variant="primary" size="md">
+                <Button variant="primary" size="md" href="/contact">
                   Let&apos;s Talk
                 </Button>
               </motion.div>
@@ -224,6 +233,7 @@ export default function Header() {
                       size="lg"
                       className="w-full text-base h-14 bg-gradient-to-r from-[#EA7436] to-[#d45e22] border-none shadow-[0_8px_20px_rgba(234,116,54,0.3)] hover:shadow-[0_8px_30px_rgba(234,116,54,0.5)] rounded-2xl"
                       onClick={() => setIsOpen(false)}
+                      href="/contact"
                     >
                       Get In Touch
                     </Button>

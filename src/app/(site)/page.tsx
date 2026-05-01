@@ -22,7 +22,6 @@ export const metadata: Metadata = {
   },
 };
 
-
 export default function Home() {
   return (
     <div className="flex flex-col w-full font-sans">
@@ -30,8 +29,8 @@ export default function Home() {
       <MotionSection />
       <BrandsSection />
       <PartnersSection />
-      <CTASection />
       <FAQSection />
+      <CTASection />
     </div>
   );
 }

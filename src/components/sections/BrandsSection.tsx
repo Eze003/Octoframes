@@ -153,14 +153,14 @@ export default function BrandsSection() {
                   className="relative p-1.5 rounded-lg bg-[#0a0a0c] border border-white/[0.04] shadow-2xl transition-all duration-300 flex items-stretch gap-1.5 group"
                 >
                   {/* Left Icon Block (Replaces Portrait Image) */}
-                  <div className="w-[72px] h-[72px] md:w-[88px] md:h-[88px] flex-shrink-0 rounded-[1.5rem] bg-[#121217] border border-white/[0.05] overflow-hidden flex items-center justify-center text-gray-500 group-hover:text-primary-400 group-hover:bg-[#18181f] transition-all duration-500 shadow-[inset_0_0_20px_rgba(0,0,0,0.5)]">
+                  <div className="w-[72px] h-[72px] md:w-[88px] md:h-[88px] flex-shrink-0 rounded-[1.5rem] bg-[#121217] border border-white/[0.05] overflow-hidden flex items-center justify-center text-primary-500 group-hover:text-primary-400 group-hover:bg-[#18181f] transition-all duration-500 shadow-[inset_0_0_20px_rgba(0,0,0,0.5)]">
                     <div className="scale-75 md:scale-90 transition-transform duration-300">
                       {trait.icon}
                     </div>
                   </div>
 
                   {/* Right Content Block (Inner Border + Primary Shadow) */}
-                  <div className="flex-1 rounded-[1.5rem] bg-[#050505] border border-primary-500/30 shadow-[inset_0_0_30px_rgba(234,116,54,0.15),0_0_15px_rgba(234,116,54,0.1)] group-hover:border-primary-500/50 group-hover:shadow-[inset_0_0_40px_rgba(234,116,54,0.25),0_0_20px_rgba(234,116,54,0.2)] transition-all duration-500 p-4 lg:px-6 flex flex-col justify-center sm:flex-row sm:items-center sm:justify-between relative overflow-hidden">
+                  <div className="flex-1 rounded-[1.5rem] bg-[#050505] border border-white/10 shadow-sm group-hover:border-primary-500/50 group-hover:shadow-[inset_0_0_40px_rgba(234,116,54,0.25),0_0_20px_rgba(234,116,54,0.2)] transition-all duration-500 p-4 lg:px-6 flex flex-col justify-center sm:flex-row sm:items-center sm:justify-between relative overflow-hidden">
                     <div>
                       <h3 className="text-lg md:text-xl font-bold text-white tracking-tight mb-0.5 group-hover:text-primary-400 transition-colors duration-300">
                         {trait.label}

@@ -143,14 +143,14 @@ export default function MotionSection() {
               whileHover={{ y: -5 }}
               className="relative p-[6px] md:p-2 rounded-[2rem] md:rounded-[2.25rem] bg-[#0a0a0c] border border-white/[0.04] shadow-2xl transition-transform duration-500 group"
             >
-              <div className="relative h-full bg-[#050505] rounded-[1.6rem] md:rounded-[1.85rem] border border-primary-500/30 shadow-[inset_0_0_40px_rgba(234,116,54,0.15),0_0_20px_rgba(234,116,54,0.1)] group-hover:border-primary-500/50 group-hover:shadow-[inset_0_0_60px_rgba(234,116,54,0.25),0_0_30px_rgba(234,116,54,0.2)] transition-all duration-500 p-6 md:p-8 overflow-hidden">
+              <div className="relative h-full bg-[#050505] rounded-[1.6rem] md:rounded-[1.85rem] border border-white/10 shadow-sm group-hover:border-primary-500/50 group-hover:shadow-[inset_0_0_60px_rgba(234,116,54,0.25),0_0_30px_rgba(234,116,54,0.2)] transition-all duration-500 p-6 md:p-8 overflow-hidden">
                 {/* Card Ambient Glow */}
                 <div className="absolute -inset-px bg-gradient-to-br from-primary-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                 
                 <div className="relative z-10 flex flex-col h-full">
                   {/* Top Bar: Icon and Pill */}
                   <div className="flex items-start justify-between mb-8">
-                    <div className="w-14 h-14 rounded-[14px] bg-[#1a0e07] border border-primary-500/30 flex items-center justify-center text-white shadow-[0_0_15px_rgba(234,116,54,0.2),inset_0_0_10px_rgba(234,116,54,0.1)] group-hover:border-primary-500/60 group-hover:shadow-[0_0_20px_rgba(234,116,54,0.4)] transition-all duration-500">
+                    <div className="w-14 h-14 rounded-[14px] bg-[#111] border border-white/10 flex items-center justify-center text-primary-500 transition-all duration-500 group-hover:border-primary-500/60 group-hover:shadow-[0_0_20px_rgba(234,116,54,0.4)]">
                       {service.icon}
                     </div>
                     <div className="px-4 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.02] text-[13px] font-medium text-gray-300 tracking-wide">

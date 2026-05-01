@@ -342,6 +342,7 @@ export default function PortfolioFormModal({
                     {!item.src ? (
                       <MediaUpload 
                         label="Upload" 
+                        type={item.type}
                         onUpload={(url) => updateContentItem(i, { src: url })} 
                       />
                     ) : (

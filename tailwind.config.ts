@@ -22,7 +22,7 @@ const config: Config = {
           900: "#682c11",
           950: "#3d190a",
         },
-        black: "#1D1917",
+        black: "#000000",
       },
       fontFamily: {
         sans: ["DM Sans", "DM Sans Placeholder", "sans-serif"],

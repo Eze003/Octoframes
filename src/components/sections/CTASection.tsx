@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { BsPatchCheck } from "react-icons/bs";
 import Button from "../ui/Button";
 
 export default function CTASection() {
@@ -13,50 +14,33 @@ export default function CTASection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative w-full rounded-[32px] px-6 py-8 md:px-12 lg:px-24 lg:py-12 overflow-hidden border border-[#222] bg-[#050505] shadow-[0_0_120px_rgba(234,116,54,0.15)] text-center flex flex-col items-center justify-center group"
+          className="relative w-full rounded-[32px] px-6 py-8 md:px-12 lg:px-24 lg:py-12 overflow-hidden border border-[#222] bg-[#050505] text-center flex flex-col items-center justify-center group"
         >
-          {/* Ambient Top Corner Light Splashes - Solid Color */}
+          {/* Image-based Light Beam - Seamless Wave Animation */}
           <motion.div
-            animate={{ opacity: [0.4, 0.7, 0.4] }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            style={{ backgroundColor: "#EA7436" }}
-            className="absolute -top-20 -left-[10%] w-96 h-96 blur-[120px] pointer-events-none"
-          />
-          <motion.div
-            animate={{ opacity: [0.5, 0.8, 0.5] }}
-            transition={{
-              duration: 4.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 1,
-            }}
-            style={{ backgroundColor: "#EA7436" }}
-            className="absolute -top-20 -right-[10%] w-96 h-96 blur-[120px] pointer-events-none"
-          />
-
-          {/* Image-based Light Beam - Static Glow */}
-          <motion.div
+            initial={{ x: "-50%", y: 0 }}
             animate={{
-              opacity: [0.6, 0.9, 0.6],
+              x: ["-51%", "-49%", "-51%"],
+              rotate: [-1, 1, -1],
+              opacity: [0.7, 1, 0.7],
             }}
             transition={{
-              duration: 4,
+              duration: 8,
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="absolute top-0 left-1/2 -translate-x-1/2 w-[150%] md:w-full h-[160%] pointer-events-none mix-blend-screen origin-top z-10"
+            className="absolute top-0 left-1/2 w-[160%] h-[160%] pointer-events-none mix-blend-screen z-0"
             style={{
               backgroundImage: "url('/beam.png')",
               backgroundSize: "100% 100%",
-              backgroundPosition: "top center",
+              backgroundPosition: "center top",
               backgroundRepeat: "no-repeat",
+              filter:
+                "sepia(1) saturate(20) hue-rotate(-15deg) brightness(1.8)",
               WebkitMaskImage:
-                "radial-gradient(ellipse at top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%)",
-              filter: "sepia(1) saturate(5) hue-rotate(-5deg) brightness(1.4)",
+                "radial-gradient(ellipse at center top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 75%)",
+              maskImage:
+                "radial-gradient(ellipse at center top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 75%)",
             }}
           />
 
@@ -82,20 +66,8 @@ export default function CTASection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="inline-flex items-center backdrop-blur-xl bg-white/[0.05] gap-2 px-3 py-1.5 border border-white/[0.08] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] rounded-full mb-8"
             >
-              <div className="w-5 h-5 rounded-full bg-primary-600 flex items-center justify-center">
-                <svg
-                  className="w-3 h-3 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
+              <div className="w-6 h-6 rounded-full bg-primary-600 flex items-center justify-center">
+                <BsPatchCheck className="w-3.5 h-3.5 text-white" />
               </div>
               <span className="text-gray-300 text-sm font-medium pr-1">
                 Become a Part of Us
