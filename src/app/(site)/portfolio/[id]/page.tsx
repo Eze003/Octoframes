@@ -150,14 +150,23 @@ export default function PortfolioDetailPage() {
                 }`}
               >
                 {media.type === "video" ? (
-                  <video
-                    src={media.src}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="w-full h-full object-cover"
-                  />
+                  media.src.includes("vimeo.com") ? (
+                    <iframe
+                      src={`https://player.vimeo.com/video/${media.src.split('/').pop()}?background=1&autoplay=1&loop=1&byline=0&title=0`}
+                      className="absolute inset-0 w-full h-full"
+                      allow="autoplay; fullscreen; picture-in-picture"
+                      frameBorder="0"
+                    />
+                  ) : (
+                    <video
+                      src={media.src}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      className="w-full h-full object-cover"
+                    />
+                  )
                 ) : (
                   <Image
                     src={media.src}

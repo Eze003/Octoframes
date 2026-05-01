@@ -42,7 +42,7 @@ export default function Header() {
             : `1px solid rgba(255, 255, 255, ${borderAlpha})`,
           boxShadow: isOpen
             ? "none"
-            : `0 2px 40px rgba(0, 0, 0, ${shadowAlpha})`,
+            : `0 0 20px rgba(0, 0, 0, ${shadowAlpha})`,
         }}
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { useState } from "react";
 
 const faqs = [
@@ -45,6 +46,19 @@ export default function FAQSection() {
 
   return (
     <section className="relative py-8 md:py-24 bg-black overflow-hidden">
+      {/* Background Image with Primary Tint */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-40">
+        <Image 
+          src="/faq.png" 
+          alt="FAQ Background" 
+          fill 
+          className="object-cover"
+        />
+        {/* Primary Color Tint Overlay */}
+        <div className="absolute inset-0 bg-primary-600/20 mix-blend-color" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
+      </div>
+
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-12 lg:gap-20">
           {/* Left Column: Heading & Info */}
@@ -104,7 +118,7 @@ export default function FAQSection() {
                   transition={{ duration: 0.5, delay: 0.1 * index }}
                   className={`group relative rounded-xl transition-all duration-500 overflow-hidden ${
                     isOpen
-                      ? "glass shadow-[0_12px_40px_rgba(0,0,0,0.5),0_0_20px_rgba(234,116,54,0.1)] border-primary-500/30"
+                      ? "glass border-primary-500/30"
                       : "bg-[#08080a] border border-white/[0.04] hover:bg-white/[0.04] hover:border-white/[0.12]"
                   }`}
                 >
@@ -158,9 +172,6 @@ export default function FAQSection() {
         </div>
       </div>
 
-      {/* Background glows */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/4 w-[50%] h-[70%] bg-primary-600/15 blur-[40px] rounded-full pointer-events-none z-0" />
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/4 w-[50%] h-[70%] bg-primary-600/15 blur-[40px] rounded-full pointer-events-none z-0" />
     </section>
   );
 }

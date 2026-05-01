@@ -1,13 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { NAVIGATION_ITEMS } from "@/constants/navigation";
 import Button from "../ui/Button";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-black pt-16 pb-6 overflow-hidden">
+    <footer className="relative bg-black pt-28 pb-6 overflow-hidden border-t-2 border-white/[0.08]">
       {/* 1. The 'Straight' Vertical Source Core - Balanced */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[2px] h-[60%] pointer-events-none z-10"
@@ -34,6 +36,29 @@ export default function Footer() {
             )
           `,
           filter: "blur(15px)",
+        }}
+      />
+
+      {/* 1.2 Faint Textured Shadows - Adding depth to the top beam */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none z-0 overflow-hidden"
+        style={{
+          background: `
+            conic-gradient(
+              from 0deg at 50% 0%,
+              transparent 140deg,
+              rgba(0,0,0,0.95) 160deg,
+              transparent 170deg,
+              rgba(0,0,0,0.9) 178deg,
+              transparent 180deg,
+              rgba(0,0,0,0.9) 182deg,
+              transparent 190deg,
+              rgba(0,0,0,0.95) 200deg,
+              transparent 220deg
+            )
+          `,
+          filter: "blur(25px)",
+          opacity: 1,
         }}
       />
 
@@ -66,7 +91,7 @@ export default function Footer() {
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 lg:gap-24 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr_1fr_1.8fr] gap-8 lg:gap-16 mb-12">
           {/* Brand Column */}
           <div className="space-y-12">
             <div className="flex items-center gap-3">
@@ -96,35 +121,49 @@ export default function Footer() {
           </div>
 
           {/* Template Pages Column */}
-          <div className="flex flex-col">
-            <h4 className="text-white font-medium mb-8 text-[18px]">
+          <div className="flex flex-col md:pl-4 lg:pl-8">
+            <h4 className="text-white font-medium mb-5 text-[16px]">
               Template Pages
             </h4>
-            <ul className="space-y-4">
-              {["Home", "About", "Portfolio", "Blog", "Contact", "FAQ"].map(
-                (item) => (
-                  <li key={item}>
-                    <a
-                      href="#"
-                      className="text-gray-400 hover:text-white transition-colors text-[16px]"
-                    >
-                      {item}
-                    </a>
-                  </li>
-                ),
-              )}
+            <ul className="space-y-2.5">
+              {NAVIGATION_ITEMS.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    href={item.href}
+                    className="text-gray-400 hover:text-white transition-colors text-[16px]"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link
+                  href="/#faq"
+                  className="text-gray-400 hover:text-white transition-colors text-[14px]"
+                >
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/#about"
+                  className="text-gray-400 hover:text-white transition-colors text-[14px]"
+                >
+                  About
+                </Link>
+              </li>
             </ul>
           </div>
 
           {/* Social Column */}
-          <div className="flex flex-col">
-            <h4 className="text-white font-medium mb-8 text-[18px]">Social</h4>
-            <ul className="space-y-4">
+          <div className="flex flex-col md:pl-8 lg:pl-12">
+            <h4 className="text-white font-medium mb-5 text-[16px]">Social</h4>
+            <ul className="space-y-2.5">
               {["Twitter (X)", "Instagram", "Youtube", "Framer"].map((item) => (
                 <li key={item}>
                   <a
                     href="#"
-                    className="text-gray-400 hover:text-white transition-colors text-[16px]"
+                    className="text-gray-400 hover:text-white transition-colors text-[14px]"
                   >
                     {item}
                   </a>
@@ -134,18 +173,18 @@ export default function Footer() {
           </div>
 
           {/* Subscribe Form Column */}
-          <div className="flex flex-col">
-            <h4 className="text-white font-medium mb-8 text-[18px]">
+          <div className="flex flex-col md:pl-8 lg:pl-12">
+            <h4 className="text-white font-medium mb-5 text-[16px]">
               Subscribe Form
             </h4>
             <div className="w-full">
-              <div className="flex items-center p-1 rounded-full bg-white/[0.03] border border-white/[0.08] group-focus-within:border-primary-500 transition-all">
+              <div className="flex items-center p-1 rounded-full bg-white/[0.03] border border-white/[0.08] focus-within:border-primary-500 focus-within:ring-4 focus-within:ring-primary-500/10 transition-all duration-300">
                 <input
                   type="email"
                   placeholder="Enter Your Email..."
-                  className="bg-transparent border-none focus:ring-0 text-[14px] px-5 w-full text-white placeholder:text-gray-600 h-10"
+                  className="bg-transparent border-none focus:ring-0 outline-none text-[14px] px-5 w-full text-white placeholder:text-gray-600 h-10"
                 />
-                <button className="relative bg-gradient-to-b from-primary-500 to-primary-700 text-white text-[12px] font-bold px-6 h-10 rounded-full border border-white/20 shadow-[0_4px_15px_rgba(234,116,54,0.3)] hover:shadow-[0_4px_25px_rgba(234,116,54,0.5)] transition-all after:absolute after:inset-0 after:border-t after:border-white/30 after:rounded-full after:pointer-events-none whitespace-nowrap">
+                <button className="relative bg-gradient-to-b from-primary-500 to-primary-700 text-white text-[12px] font-bold px-8 h-10 rounded-full border border-white/20 shadow-[0_4px_15px_rgba(234,116,54,0.3)] hover:shadow-[0_4px_25px_rgba(234,116,54,0.5)] transition-all after:absolute after:inset-0 after:border-t after:border-white/30 after:rounded-full after:pointer-events-none whitespace-nowrap">
                   Subscribe Us
                 </button>
               </div>
@@ -154,7 +193,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-10 border-t border-white/[0.05] flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="pt-6 border-t border-white/[0.08] flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-gray-500 text-[16px]">
             © {currentYear} Octoframes Studio. All rights reserved.
           </p>
