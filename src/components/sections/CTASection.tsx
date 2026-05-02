@@ -16,33 +16,15 @@ export default function CTASection() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="relative w-full rounded-[32px] px-6 py-8 md:px-12 lg:px-24 lg:py-12 overflow-hidden border border-[#222] bg-[#050505] text-center flex flex-col items-center justify-center group"
         >
-          {/* Image-based Light Beam - Seamless Wave Animation */}
-          <motion.div
-            initial={{ x: "-50%", y: 0 }}
-            animate={{
-              x: ["-51%", "-49%", "-51%"],
-              rotate: [-1, 1, -1],
-              opacity: [0.7, 1, 0.7],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="absolute top-0 left-1/2 w-[160%] h-[160%] pointer-events-none mix-blend-screen z-0"
-            style={{
-              backgroundImage: "url('/beam.png')",
-              backgroundSize: "100% 100%",
-              backgroundPosition: "center top",
-              backgroundRepeat: "no-repeat",
-              filter:
-                "sepia(1) saturate(20) hue-rotate(-15deg) brightness(1.8)",
-              WebkitMaskImage:
-                "radial-gradient(ellipse at center top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 75%)",
-              maskImage:
-                "radial-gradient(ellipse at center top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 75%)",
-            }}
-          />
+          {/* Video Background Layer */}
+          <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
+            <iframe
+              src="https://player.cloudinary.com/embed/?cloud_name=dwumyjict&public_id=GettyImages-1144963868_pqkkkj&autoplay=true&loop=true&muted=true&controls=false"
+              className="w-full h-full scale-[1.5] object-cover"
+              allow="autoplay; fullscreen"
+              style={{ border: "none" }}
+            />
+          </div>
 
           {/* Distinct Dotted Texture Background */}
           <div
