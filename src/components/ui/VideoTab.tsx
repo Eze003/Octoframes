@@ -55,13 +55,13 @@ export default function VideoTab() {
           transform: "perspective(1200px) rotateX(20deg) scale(0.95)",
         }}
         animate={{
-          opacity: 0.35,
+          opacity: 0.2,
           y: 0,
           transform: "perspective(1200px) rotateX(10deg) scale(1.02)",
         }}
         transition={{ duration: 1.5, ease: [0.23, 1, 0.32, 1], delay: 0.5 }}
         style={{ transformOrigin: "center bottom" }}
-        className="absolute top-4 -inset-x-1.5 h-[75%] bg-primary-500 blur-[25px] rounded-[35px] pointer-events-none"
+        className="absolute top-4 -inset-x-1.5 h-[95%] bg-primary-500 blur-[25px] rounded-[35px] pointer-events-none z-0"
       />
       <motion.div
         initial={{
@@ -70,13 +70,29 @@ export default function VideoTab() {
           transform: "perspective(1200px) rotateX(20deg) scale(0.95)",
         }}
         animate={{
-          opacity: 0.2,
+          opacity: 0.1,
           y: 0,
           transform: "perspective(1200px) rotateX(10deg) scale(1.02)",
         }}
         transition={{ duration: 1.5, ease: [0.23, 1, 0.32, 1], delay: 0.5 }}
         style={{ transformOrigin: "center bottom" }}
-        className="absolute top-6 -inset-x-1 h-[70%] bg-primary-400 blur-[15px] rounded-[32px] pointer-events-none"
+        className="absolute top-6 -inset-x-1 h-[90%] bg-primary-400 blur-[15px] rounded-[32px] pointer-events-none z-0"
+      />
+      {/* Explicit Bottom Shadow Layer - Positioned Behind */}
+      <motion.div
+        initial={{
+          opacity: 0,
+          y: 40,
+          transform: "perspective(1200px) rotateX(20deg) scale(0.95)",
+        }}
+        animate={{
+          opacity: 0.5,
+          y: 0,
+          transform: "perspective(1200px) rotateX(10deg) scale(1.05)",
+        }}
+        transition={{ duration: 1.5, ease: [0.23, 1, 0.32, 1], delay: 0.5 }}
+        style={{ transformOrigin: "center bottom" }}
+        className="absolute inset-x-8 bottom-[-40px] h-[30%] bg-black/60 blur-[50px] rounded-full pointer-events-none z-0"
       />
 
       {/* Main Container (The Tab/Video Frame) */}
@@ -94,17 +110,14 @@ export default function VideoTab() {
         transition={{ duration: 1.5, ease: [0.23, 1, 0.32, 1], delay: 0.5 }}
         style={{
           transformOrigin: "center bottom",
-          maskImage: "linear-gradient(to bottom, black 70%, transparent 98%)",
+          maskImage: "linear-gradient(to bottom, black 95%, transparent 100%)",
           WebkitMaskImage:
-            "linear-gradient(to bottom, black 70%, transparent 98%)",
+            "linear-gradient(to bottom, black 95%, transparent 100%)",
         }}
-        className="relative aspect-video w-full rounded-[32px] p-2 md:p-3 border border-[#222] bg-black shadow-[0_-30px_80px_-20px_rgba(234,116,54,0.3)] group"
+        className="relative aspect-video w-full rounded-[32px] p-2 md:p-3 bg-black group z-10"
       >
         {/* Inner Border Container */}
-        <div className="relative w-full h-full rounded-3xl border border-[#333] bg-[#050505] overflow-hidden shadow-[inset_0_0_40px_rgba(234,116,54,0.15)]">
-          {/* Border Bloom - perfectly inner-aligned */}
-          <div className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/10 pointer-events-none z-20" />
-
+        <div className="relative w-full h-full rounded-3xl bg-[#050505] overflow-hidden shadow-[inset_0_0_20px_rgba(234,116,54,0.1)]">
           {/* Video Player */}
           <div className="absolute inset-0 z-10 overflow-hidden">
             <video

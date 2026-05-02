@@ -19,7 +19,6 @@ export default function MediaUpload({
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isUploading, setIsUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
-
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -28,11 +27,7 @@ export default function MediaUpload({
     setUploadProgress(0);
 
     try {
-      if (type === "video" || file.type.startsWith("video/")) {
-        await handleVimeoUpload(file);
-      } else {
-        await handleCloudinaryUpload(file);
-      }
+      await handleCloudinaryUpload(file);
     } catch (error) {
       console.error("Upload failed:", error);
       alert("Upload failed. Please check your console and .env configuration.");
@@ -64,59 +59,35 @@ export default function MediaUpload({
     formData.append("folder", folder);
 
     const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
-    const res = await fetch(
-      `https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`,
-      { method: "POST", body: formData }
-    );
-
-    const data = await res.json();
-    if (data.secure_url) {
-      onUpload(data.secure_url);
-    } else {
-      throw new Error(data.error?.message || "Cloudinary upload failed");
-    }
-  };
-
-  const handleVimeoUpload = async (file: File) => {
-    // 1. Get upload ticket
-    const ticketRes = await fetch("/api/vimeo/upload", {
-      method: "POST",
-      body: JSON.stringify({
-        fileName: file.name,
-        fileSize: file.size,
-      }),
-    });
-
-    const { uploadLink, videoId } = await ticketRes.json();
-
-    if (!uploadLink) throw new Error("Could not get Vimeo upload link");
-
-    // 2. Perform TUS upload
+    
+    // Using XMLHttpRequest to track upload progress
     return new Promise<void>((resolve, reject) => {
-      const upload = new tus.Upload(file, {
-        uploadUrl: uploadLink,
-        endpoint: uploadLink, // Vimeo uses the uploadLink as the endpoint for TUS
-        retryDelays: [0, 3000, 5000, 10000, 20000],
-        metadata: {
-          filename: file.name,
-          filetype: file.type,
-        },
-        onError: (error) => {
-          console.error("TUS Error:", error);
-          reject(error);
-        },
-        onProgress: (bytesSent, bytesTotal) => {
-          const percentage = Math.round((bytesSent / bytesTotal) * 100);
-          setUploadProgress(percentage);
-        },
-        onSuccess: () => {
-          // Vimeo URL format: https://vimeo.com/VIDEO_ID
-          onUpload(`https://vimeo.com/${videoId}`);
-          resolve();
-        },
-      });
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", `https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`);
 
-      upload.start();
+      xhr.upload.onprogress = (event) => {
+        if (event.lengthComputable) {
+          const percentage = Math.round((event.loaded / event.total) * 100);
+          setUploadProgress(percentage);
+        }
+      };
+
+      xhr.onload = () => {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          const data = JSON.parse(xhr.responseText);
+          if (data.secure_url) {
+            onUpload(data.secure_url);
+            resolve();
+          } else {
+            reject(new Error(data.error?.message || "Cloudinary upload failed"));
+          }
+        } else {
+          reject(new Error("Cloudinary upload failed"));
+        }
+      };
+
+      xhr.onerror = () => reject(new Error("Network error"));
+      xhr.send(formData);
     });
   };
 
@@ -127,7 +98,7 @@ export default function MediaUpload({
         ref={fileInputRef}
         onChange={handleUpload}
         className="hidden"
-        accept={type === "video" ? "video/*" : accept}
+        accept={accept}
       />
       
       <button
@@ -142,7 +113,7 @@ export default function MediaUpload({
               <div className="w-8 h-8 border-2 border-primary-500 border-t-transparent rounded-full animate-spin" />
               <div className="flex flex-col items-center">
                 <span className="text-[10px] font-black text-white uppercase tracking-[0.2em]">
-                  {type === "video" ? "Transmitting to Vimeo" : "Uploading to Cloudinary"}
+                  Uploading to Cloudinary
                 </span>
                 <span className="text-[14px] font-black text-primary-400 mt-1">{uploadProgress}%</span>
               </div>
@@ -166,7 +137,7 @@ export default function MediaUpload({
         </div>
         <span className="text-white font-bold text-[11px] uppercase tracking-widest">{label}</span>
         <span className="text-white/20 text-[10px] mt-1 italic">
-          {type === "video" ? "Vimeo Video Manager" : "Cloudinary Asset Manager"}
+          Cloudinary Asset Manager
         </span>
       </button>
     </div>

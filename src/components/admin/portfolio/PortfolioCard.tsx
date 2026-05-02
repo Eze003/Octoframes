@@ -16,7 +16,7 @@ export default function PortfolioCard({
   onDelete,
 }: PortfolioCardProps) {
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -4 }}
@@ -37,7 +37,7 @@ export default function PortfolioCard({
             <span className="text-white/5 text-6xl font-black">OCTO</span>
           </div>
         )}
-        
+
         {/* Overlay gradient for text legibility */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
       </div>
@@ -56,10 +56,14 @@ export default function PortfolioCard({
               Client: {portfolio.client}
             </p>
           </div>
-          
+
           <div className="bg-white/[0.05] border border-white/[0.1] rounded-lg px-2.5 py-1.5 flex flex-col items-center justify-center min-w-[50px]">
-             <span className="text-white/20 text-[9px] font-black uppercase leading-none mb-1">Items</span>
-             <span className="text-white font-bold text-sm leading-none">{portfolio.content?.length || 0}</span>
+            <span className="text-white/20 text-[9px] font-black uppercase leading-none mb-1">
+              Items
+            </span>
+            <span className="text-white font-bold text-sm leading-none">
+              {portfolio.content?.length || 0}
+            </span>
           </div>
         </div>
       </div>
@@ -69,23 +73,47 @@ export default function PortfolioCard({
         <div className="bg-black/80 backdrop-blur-xl border border-white/10 rounded-full px-3 py-1 text-[10px] text-white/60 font-bold uppercase tracking-wider">
           {portfolio.year || "2025"}
         </div>
-        
+
         <div className="flex gap-2 pointer-events-auto">
           <button
-            onClick={(e) => { e.stopPropagation(); onEdit(portfolio); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              onEdit(portfolio);
+            }}
             className="w-8 h-8 rounded-full bg-primary-500 text-white flex items-center justify-center shadow-lg shadow-primary-500/40 hover:bg-primary-400 hover:scale-110 transition-all active:scale-95"
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
               <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
             </svg>
           </button>
-          
+
           <button
-            onClick={(e) => { e.stopPropagation(); onDelete(portfolio.id); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              onDelete(portfolio.id);
+            }}
             className="w-8 h-8 rounded-full bg-red-500/20 backdrop-blur-md border border-red-500/30 text-red-500 flex items-center justify-center hover:bg-red-500 hover:text-white transition-all active:scale-95"
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <polyline points="3 6 5 6 21 6" />
               <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
             </svg>

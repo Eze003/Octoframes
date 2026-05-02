@@ -56,13 +56,13 @@ export default function HeroSection() {
           transition={{ duration: 0.6, delay: 0.7 }}
           className="relative z-20 flex flex-row gap-4 justify-center items-center mb-10"
         >
-          {/* The Bridge Glow - More Vibrant Gradient */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-b from-primary-500/45 via-primary-500/15 to-transparent blur-[100px] -z-10 pointer-events-none" />
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[300px] bg-gradient-to-b from-primary-400/20 to-transparent blur-[60px] -z-10 pointer-events-none" />
-          
+          {/* The Bridge Glow - More Faint Gradient to match VideoTab */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-gradient-to-b from-primary-500/25 via-primary-500/10 to-transparent blur-[80px] -z-10 pointer-events-none" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[300px] bg-gradient-to-b from-primary-400/10 to-transparent blur-[50px] -z-10 pointer-events-none" />
+
           {/* Tight edge glow around bottom/sides of buttons */}
-          <div className="absolute -inset-x-6 -bottom-6 top-1/2 bg-primary-500/15 blur-[40px] rounded-full -z-10" />
-          
+          <div className="absolute -inset-x-6 -bottom-6 top-1/2 bg-primary-500/05 blur-[30px] rounded-full -z-10" />
+
           <Button variant="secondary" size="lg" href="/portfolio">
             See Our Work
           </Button>
