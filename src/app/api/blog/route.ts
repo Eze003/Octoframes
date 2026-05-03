@@ -5,7 +5,7 @@ import { BlogPost } from "@/entities/BlogPost";
 export async function GET() {
   try {
     const db = await getDbConnection();
-    const repo = db.getRepository("BlogPost");
+    const repo = db.getRepository(BlogPost);
     const posts = await repo.find({
       where: { published: true },
       order: { createdAt: "DESC" },
@@ -20,7 +20,7 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const db = await getDbConnection();
-    const repo = db.getRepository("BlogPost");
+    const repo = db.getRepository(BlogPost);
     const body = await request.json();
 
     const post = repo.create(body);

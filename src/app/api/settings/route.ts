@@ -5,7 +5,7 @@ import { Setting } from "@/entities/Setting";
 export async function GET() {
   try {
     const db = await getDbConnection();
-    const repo = db.getRepository<Setting>("Setting");
+    const repo = db.getRepository(Setting);
     const settings = await repo.find();
     
     // Transform to key-value object for easier frontend use
@@ -21,7 +21,7 @@ export async function GET() {
 export async function PATCH(request: Request) {
   try {
     const db = await getDbConnection();
-    const repo = db.getRepository<Setting>("Setting");
+    const repo = db.getRepository(Setting);
     const { key, value } = await request.json();
 
     if (!key) {

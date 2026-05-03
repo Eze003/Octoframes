@@ -6,7 +6,7 @@ import { Portfolio } from "@/entities/Portfolio";
 export async function GET() {
   try {
     const dataSource = await getDbConnection();
-    const portfolioRepository = dataSource.getRepository("Portfolio");
+    const portfolioRepository = dataSource.getRepository(Portfolio);
 
     const portfolios = await portfolioRepository.find({
       order: { createdAt: "DESC" },
@@ -29,7 +29,7 @@ export async function POST(req: Request) {
     }
 
     const dataSource = await getDbConnection();
-    const portfolioRepository = dataSource.getRepository("Portfolio");
+    const portfolioRepository = dataSource.getRepository(Portfolio);
 
     const portfolio = portfolioRepository.create({
       title,
