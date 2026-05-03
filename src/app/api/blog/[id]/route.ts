@@ -9,7 +9,7 @@ export async function GET(
   try {
     const { id } = await params;
     const db = await getDbConnection();
-    const repo = db.getRepository("BlogPost");
+    const repo = db.getRepository(BlogPost);
 
     const post = await repo.findOneBy({ id: parseInt(id) });
     if (!post) {
@@ -30,7 +30,7 @@ export async function PATCH(
   try {
     const { id } = await params;
     const db = await getDbConnection();
-    const repo = db.getRepository("BlogPost");
+    const repo = db.getRepository(BlogPost);
     const body = await request.json();
 
     const post = await repo.findOneBy({ id: parseInt(id) });
@@ -55,7 +55,7 @@ export async function DELETE(
   try {
     const { id } = await params;
     const db = await getDbConnection();
-    const repo = db.getRepository("BlogPost");
+    const repo = db.getRepository(BlogPost);
 
     const post = await repo.findOneBy({ id: parseInt(id) });
     if (!post) {

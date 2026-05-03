@@ -7,7 +7,7 @@ export async function PATCH(_req: Request, { params }: { params: Promise<{ id: s
   try {
     const { id } = await params;
     const dataSource = await getDbConnection();
-    const messageRepository = dataSource.getRepository("ContactMessage");
+    const messageRepository = dataSource.getRepository(ContactMessage);
 
     const message = await messageRepository.findOneBy({ id: parseInt(id) });
     if (!message) {
@@ -28,7 +28,7 @@ export async function DELETE(_req: Request, { params }: { params: Promise<{ id: 
   try {
     const { id } = await params;
     const dataSource = await getDbConnection();
-    const messageRepository = dataSource.getRepository("ContactMessage");
+    const messageRepository = dataSource.getRepository(ContactMessage);
 
     await messageRepository.delete({ id: parseInt(id) });
 

@@ -5,7 +5,7 @@ import { BlogPost } from "@/entities/BlogPost";
 export async function GET() {
   try {
     const db = await getDbConnection();
-    const repo = db.getRepository("BlogPost");
+    const repo = db.getRepository(BlogPost);
     const posts = await repo.find({
       order: { createdAt: "DESC" },
     });
