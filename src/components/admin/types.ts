@@ -17,6 +17,8 @@ export interface Portfolio {
   client: string;
   year: string;
   image: string;
+  description?: string;
+  services?: string;
   content: { type: string; src: string }[];
   createdAt: string;
 }

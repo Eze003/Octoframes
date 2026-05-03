@@ -20,6 +20,12 @@ export class Portfolio {
   @Column({ type: "text", nullable: true })
   image!: string; // Main hero image URL
 
+  @Column({ type: "text", nullable: true })
+  description!: string;
+
+  @Column({ type: "varchar", length: 255, nullable: true })
+  services!: string;
+
   @Column({ type: "jsonb", default: [] })
   content!: { type: string; src: string }[]; // Array of media components for the collage
 

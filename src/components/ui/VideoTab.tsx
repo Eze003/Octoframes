@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import { PortfolioVideoPlayer } from "@/components/ui/PortfolioVideoPlayer";
 
 export default function VideoTab() {
   const [text, setText] = useState("");
@@ -120,16 +121,11 @@ export default function VideoTab() {
         <div className="relative w-full h-full rounded-3xl bg-[#050505] overflow-hidden shadow-[inset_0_0_20px_rgba(234,116,54,0.1)]">
           {/* Video Player */}
           <div className="absolute inset-0 z-10 overflow-hidden">
-            <video
-              key={videoUrl}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-            >
-              <source src={videoUrl} type="video/mp4" />
-            </video>
+            <PortfolioVideoPlayer
+              src={videoUrl}
+              showControls={false}
+              className="w-full h-full"
+            />
           </div>
 
           {/* Subtle Overlays for depth */}

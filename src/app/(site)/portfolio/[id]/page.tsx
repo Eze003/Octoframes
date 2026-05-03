@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
+import { PortfolioVideoPlayer } from "@/components/ui/PortfolioVideoPlayer";
 
 export default function PortfolioDetailPage() {
   const params = useParams();
@@ -45,8 +46,6 @@ export default function PortfolioDetailPage() {
   return (
     <div className="min-h-screen bg-black pt-24 pb-16 overflow-x-hidden relative">
       {/* Softened Background Glows */}
-      <div className="absolute top-[30%] left-[-10%] w-[80%] h-[700px] bg-[#EA7436]/10 blur-[120px] rounded-full pointer-events-none -translate-y-1/2 z-0 mix-blend-screen" />
-      <div className="absolute top-[20%] right-[-10%] w-[50%] h-[600px] bg-[#d45e22]/10 blur-[120px] rounded-full pointer-events-none z-0 mix-blend-screen" />
 
       <div className="w-full max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         <motion.div
@@ -56,7 +55,7 @@ export default function PortfolioDetailPage() {
         >
           <div className="flex flex-col md:flex-row justify-between items-start mb-24 gap-12 md:gap-8">
             {/* Left Section */}
-            <div className="flex flex-col md:w-[55%]">
+            <div className="flex flex-col md:w-[55%] relative group">
               <div className="inline-flex items-center gap-3 px-1 py-1 rounded-full bg-[#111] border border-white/5 w-fit mb-4">
                 <span className="px-3 py-1 rounded-full bg-[#EA7436] text-[10px] font-bold text-white uppercase tracking-wider">
                   DATE
@@ -73,8 +72,8 @@ export default function PortfolioDetailPage() {
               </h1>
 
               <p className="text-white/60 text-base md:text-[17px] max-w-lg leading-relaxed">
-                {project.title} is a cutting-edge creative agency that brings
-                innovative designs and strategic solutions to life.
+                {project.description ||
+                  `${project.title} is a cutting-edge creative agency that brings innovative designs and strategic solutions to life.`}
               </p>
 
               <div className="flex flex-wrap gap-3 mt-8">
@@ -88,8 +87,8 @@ export default function PortfolioDetailPage() {
             </div>
 
             {/* Right Section (Glass Card) */}
-            <div className="w-full md:w-[40%] flex justify-end">
-              <div className="w-full max-w-[420px] rounded-[16px] border border-white/10 bg-white/5 backdrop-blur-sm p-8 md:p-10 shadow-[0_12px_40px_rgba(0,0,0,0.5),0_0_20px_rgba(234,116,54,0.1)] hover:bg-white/10 transition-colors duration-500">
+            <div className="w-full md:w-[40%] flex justify-end relative group">
+              <div className="w-full max-w-[420px] rounded-[16px] border border-white/10 bg-white/5 backdrop-blur-sm p-8 md:p-10 hover:bg-white/10 transition-colors duration-500 relative z-10 overflow-hidden">
                 <div className="flex flex-col">
                   {/* Services */}
                   <div className="relative pb-6 mb-6 after:absolute after:bottom-0 after:left-0 after:w-2/3 after:h-[1px] after:bg-gradient-to-r after:from-white/10 after:to-transparent">
@@ -97,7 +96,7 @@ export default function PortfolioDetailPage() {
                       Services
                     </h4>
                     <p className="text-white font-medium text-[17px]">
-                      Web design & Web development
+                      {project.services || "Web design & Web development"}
                     </p>
                   </div>
 
@@ -150,13 +149,9 @@ export default function PortfolioDetailPage() {
                 }`}
               >
                 {media.type === "video" ? (
-                  <video
+                  <PortfolioVideoPlayer
                     src={media.src}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="w-full h-full object-cover"
+                    className="w-full h-full"
                   />
                 ) : (
                   <Image
