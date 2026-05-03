@@ -6,7 +6,7 @@ import { Portfolio } from "@/entities/Portfolio";
 export async function GET() {
   try {
     const dataSource = await getDbConnection();
-    const portfolioRepository = dataSource.getRepository(Portfolio);
+    const portfolioRepository = dataSource.getRepository("Portfolio");
 
     const portfolios = await portfolioRepository.find({
       order: { createdAt: "DESC" },
@@ -22,14 +22,14 @@ export async function GET() {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { title, category, client, year, image, content } = body;
+    const { title, category, client, year, image, content, description, services } = body;
 
     if (!title || !category || !client) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
     const dataSource = await getDbConnection();
-    const portfolioRepository = dataSource.getRepository(Portfolio);
+    const portfolioRepository = dataSource.getRepository("Portfolio");
 
     const portfolio = portfolioRepository.create({
       title,
@@ -37,6 +37,8 @@ export async function POST(req: Request) {
       client,
       year,
       image,
+      description,
+      services,
       content: content || [],
     });
 

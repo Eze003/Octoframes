@@ -23,6 +23,8 @@ export default function PortfolioFormModal({
     client: editTarget?.client ?? "",
     year: editTarget?.year ?? new Date().getFullYear().toString(),
     image: editTarget?.image ?? "",
+    description: editTarget?.description ?? "",
+    services: editTarget?.services ?? "",
   });
   const [contentItems, setContentItems] = useState<
     (ContentItem & { id: string })[]
@@ -201,6 +203,39 @@ export default function PortfolioFormModal({
                       className="w-full px-3 py-2.5 bg-white/[0.04] border border-white/[0.08] rounded-md text-white placeholder-gray-700 text-sm focus:outline-none focus:border-primary-500/50 transition-all font-medium"
                     />
                   </div>
+                </div>
+
+                {/* Services */}
+                <div>
+                  <label className="block text-[10px] uppercase font-black tracking-widest text-white/40 mb-1.5 pl-1">
+                    Services *
+                  </label>
+                  <input
+                    required
+                    value={pform.services}
+                    onChange={(e) =>
+                      setPform((p) => ({ ...p, services: e.target.value }))
+                    }
+                    placeholder="e.g. Web Design & Development"
+                    className="w-full px-3 py-2.5 bg-white/[0.04] border border-white/[0.08] rounded-md text-white placeholder-gray-700 text-sm focus:outline-none focus:border-primary-500/50 transition-all font-medium"
+                  />
+                </div>
+
+                {/* Description */}
+                <div>
+                  <label className="block text-[10px] uppercase font-black tracking-widest text-white/40 mb-1.5 pl-1">
+                    Description *
+                  </label>
+                  <textarea
+                    required
+                    rows={4}
+                    value={pform.description}
+                    onChange={(e) =>
+                      setPform((p) => ({ ...p, description: e.target.value }))
+                    }
+                    placeholder="Project description..."
+                    className="w-full px-3 py-2.5 bg-white/[0.04] border border-white/[0.08] rounded-md text-white placeholder-gray-700 text-sm focus:outline-none focus:border-primary-500/50 transition-all font-medium resize-none"
+                  />
                 </div>
 
                 {/* Hero image */}

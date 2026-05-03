@@ -7,7 +7,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
   try {
     const { id } = await params;
     const dataSource = await getDbConnection();
-    const portfolioRepository = dataSource.getRepository(Portfolio);
+    const portfolioRepository = dataSource.getRepository("Portfolio");
 
     const portfolio = await portfolioRepository.findOne({ where: { id: Number(id) } });
     if (!portfolio) {
@@ -27,7 +27,7 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
     const { id } = await params;
     const body = await req.json();
     const dataSource = await getDbConnection();
-    const portfolioRepository = dataSource.getRepository(Portfolio);
+    const portfolioRepository = dataSource.getRepository("Portfolio");
 
     const portfolio = await portfolioRepository.findOneBy({ id: parseInt(id) } as any);
     if (!portfolio) {
@@ -48,7 +48,7 @@ export async function DELETE(_req: Request, { params }: { params: Promise<{ id: 
   try {
     const { id } = await params;
     const dataSource = await getDbConnection();
-    const portfolioRepository = dataSource.getRepository(Portfolio);
+    const portfolioRepository = dataSource.getRepository("Portfolio");
 
     await portfolioRepository.delete({ id: parseInt(id) });
 
