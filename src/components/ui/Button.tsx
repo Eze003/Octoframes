@@ -38,6 +38,7 @@ export default function Button({
     lg: "px-8 py-3 text-base",
   };
 
+  const isFullWidth = className.includes("w-full");
   const classes = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`;
 
   const content = (
@@ -52,14 +53,14 @@ export default function Button({
 
   if (href) {
     return (
-      <a href={href} className="inline-block">
+      <a href={href} className={isFullWidth ? "w-full" : "inline-block"}>
         {content}
       </a>
     );
   }
 
   return (
-    <button onClick={onClick} className="inline-block">
+    <button onClick={onClick} className={isFullWidth ? "w-full" : "inline-block"}>
       {content}
     </button>
   );

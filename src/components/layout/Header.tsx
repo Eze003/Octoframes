@@ -1,6 +1,11 @@
 "use client";
 
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useMotionValueEvent,
+} from "framer-motion";
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -17,7 +22,7 @@ export default function Header() {
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0;
-    
+
     if (latest > previous && latest > 150) {
       setHidden(true);
     } else {
@@ -46,14 +51,12 @@ export default function Header() {
           borderBottom: isOpen
             ? "1px solid transparent"
             : `1px solid rgba(255, 255, 255, ${borderAlpha})`,
-          boxShadow: isOpen
-            ? "none"
-            : `0 0 20px rgba(0, 0, 0, ${shadowAlpha})`,
+          boxShadow: isOpen ? "none" : `0 0 20px rgba(0, 0, 0, ${shadowAlpha})`,
         }}
         initial={{ opacity: 0, y: -20 }}
-        animate={{ 
-          opacity: hidden && !isOpen ? 0 : 1, 
-          y: hidden && !isOpen ? "-100%" : 0 
+        animate={{
+          opacity: hidden && !isOpen ? 0 : 1,
+          y: hidden && !isOpen ? "-100%" : 0,
         }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
       >
@@ -86,7 +89,9 @@ export default function Header() {
                     <Link
                       href={item.href}
                       className={`block transition-colors duration-200 text-base ${
-                        isActive ? "text-primary-500 font-semibold" : "text-gray-400 hover:text-white"
+                        isActive
+                          ? "text-primary-500 font-semibold"
+                          : "text-gray-400 hover:text-white"
                       }`}
                     >
                       {item.name}
@@ -152,7 +157,7 @@ export default function Header() {
             >
               <div className="max-w-7xl mx-auto px-6">
                 {/* Header Content INSIDE the panel */}
-                <div className="flex items-center justify-between h-[88px] border-b-2 border-white/[0.8]">
+                <div className="flex items-center justify-between h-[88px] border-b border-white/[0.12]">
                   <div className="flex items-center gap-2.5">
                     <div className="w-8 h-8 rounded-lg bg-[#EA7436] flex items-center justify-center shadow-[0_0_15px_rgba(234,116,54,0.4)]">
                       <svg
@@ -176,7 +181,7 @@ export default function Header() {
 
                   <button
                     onClick={() => setIsOpen(false)}
-                    className="w-10 h-10 flex items-center justify-center text-white"
+                    className="w-10 h-10 flex items-center justify-center text-white/40 hover:text-white transition-colors"
                     aria-label="Close menu"
                   >
                     <svg
@@ -210,7 +215,9 @@ export default function Header() {
                           href={item.href}
                           onClick={() => setIsOpen(false)}
                           className={`block text-md tracking-wide transition-colors ${
-                            isActive ? "text-primary-500 font-bold" : "font-normal text-white/70 hover:text-white"
+                            isActive
+                              ? "text-primary-500 font-bold"
+                              : "font-normal text-white/70 hover:text-white"
                           }`}
                         >
                           {item.name}
@@ -221,12 +228,12 @@ export default function Header() {
                 </div>
 
                 {/* Bottom CTA Button */}
-                <div className="pb-10 w-full">
+                <div className="pb-10 w-full flex">
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
-                    className="w-full"
+                    className="w-full flex"
                   >
                     <Button
                       variant="primary"

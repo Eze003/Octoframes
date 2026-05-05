@@ -11,7 +11,10 @@ const AppDataSource = new DataSource({
   synchronize: process.env.NODE_ENV !== "production", // Auto-creates tables in dev
   logging: process.env.NODE_ENV !== "production",
   entities: [Portfolio, ContactMessage, BlogPost, Setting],
-  ssl: process.env.NODE_ENV === "production" ? { rejectUnauthorized: false } : false,
+  ssl:
+    process.env.NODE_ENV === "production"
+      ? { rejectUnauthorized: false }
+      : false,
 });
 
 /**
@@ -29,12 +32,23 @@ export const getDbConnection = async (): Promise<DataSource> => {
     // In development, check if all expected entities are loaded.
     // HMR can sometimes cause classes to be re-defined or missing from the cache.
     if (isDev) {
-      const loadedEntities = global._databaseSource.entityMetadatas.map(m => m.name);
-      const expectedEntities = ["Portfolio", "ContactMessage", "BlogPost", "Setting"];
-      const missing = expectedEntities.filter(e => !loadedEntities.includes(e));
-      
+      const loadedEntities = global._databaseSource.entityMetadatas.map(
+        (m) => m.name,
+      );
+      const expectedEntities = [
+        "Portfolio",
+        "ContactMessage",
+        "BlogPost",
+        "Setting",
+      ];
+      const missing = expectedEntities.filter(
+        (e) => !loadedEntities.includes(e),
+      );
+
       if (missing.length > 0) {
-        console.log(`⚠️ Missing metadata for ${missing.join(", ")}, forcing re-initialization...`);
+        console.log(
+          `⚠️ Missing metadata for ${missing.join(", ")}, forcing re-initialization...`,
+        );
         await global._databaseSource.destroy();
         global._databaseSource = undefined;
       } else {
@@ -51,8 +65,9 @@ export const getDbConnection = async (): Promise<DataSource> => {
 
   if (!global._databaseSource.isInitialized) {
     await global._databaseSource.initialize();
-    console.log("🚀 DB connection initialized. Entities:", 
-      global._databaseSource.entityMetadatas.map(m => m.name)
+    console.log(
+      "🚀 DB connection initialized. Entities:",
+      global._databaseSource.entityMetadatas.map((m) => m.name),
     );
   }
 

@@ -121,9 +121,9 @@ export default function PortfolioFormModal({
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 30, opacity: 0 }}
         transition={{ duration: 0.4 }}
-        className="w-full max-w-5xl rounded-[28px] p-2 border border-[#222] bg-black shadow-[0_0_80px_rgba(234,116,54,0.4)]"
+        className="w-full max-w-5xl rounded-[28px] p-2 border border-[#222] bg-black"
       >
-        <div className="rounded-2xl border border-primary-500/30 bg-[#050505] shadow-[inset_0_0_30px_rgba(234,116,54,0.1)] p-8">
+        <div className="rounded-2xl border border-primary-500/30 bg-[#050505] p-4 md:p-8">
           <div className="flex flex-col lg:flex-row gap-10">
             {/* Left Side: Form Controls */}
             <div className="flex-1">
@@ -143,7 +143,7 @@ export default function PortfolioFormModal({
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Row 1 */}
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-[10px] uppercase font-black tracking-widest text-white/40 mb-1.5 pl-1">
                       Title *
@@ -175,7 +175,7 @@ export default function PortfolioFormModal({
                 </div>
 
                 {/* Row 2 */}
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-[10px] uppercase font-black tracking-widest text-white/40 mb-1.5 pl-1">
                       Client *

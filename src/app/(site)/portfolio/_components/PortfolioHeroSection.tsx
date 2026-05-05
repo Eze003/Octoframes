@@ -39,31 +39,6 @@ export default function PortfolioHeroSection() {
           Explore Our Most <br className="hidden md:block" />
           Remarkable Projects.
         </motion.h1>
-
-        {/* Hero Description */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="mb-12 max-w-2xl mx-auto"
-        >
-          <p className="text-base md:text-lg text-gray-300 leading-relaxed">
-            We craft customized solutions that empower both startups and
-            established brands, driving success and delivering real impact.
-          </p>
-        </motion.div>
-
-        {/* Call to Action */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="relative z-10 flex flex-row gap-4 justify-center items-center"
-        >
-          <Button variant="primary" size="lg">
-            Build Your Product
-          </Button>
-        </motion.div>
       </div>
     </section>
   );

@@ -31,12 +31,12 @@ export default function InboxTab({
     if (selectedMsg?.id === id) setSelectedMsg(null);
   };
 
-  if (loading && messages.length === 0) return <div className="p-4"><InboxSkeleton /></div>;
+  if (loading && messages.length === 0) return <div className="p-4 md:p-8"><InboxSkeleton /></div>;
 
   return (
-    <div className="flex flex-col md:flex-row gap-0 h-[calc(100vh-240px)] overflow-hidden rounded-[24px]">
+    <div className="flex flex-col md:flex-row gap-0 h-[calc(100vh-140px)] md:h-[calc(100vh-200px)] overflow-hidden rounded-[24px] border border-white/[0.06] bg-[#050505]">
       {/* Inbox Sidebar List */}
-      <div className="w-full md:w-[380px] flex-shrink-0 flex flex-col border-r border-white/[0.06] bg-black/20">
+      <div className={`w-full md:w-[380px] flex-shrink-0 flex flex-col border-r border-white/[0.06] bg-black/20 ${selectedMsg ? 'hidden md:flex' : 'flex'}`}>
         <div className="p-6 border-b border-white/[0.04] bg-white/[0.02] flex items-center justify-between">
           <h2 className="text-sm font-bold text-white tracking-tight">Recent Messages</h2>
           <span className="text-[10px] font-black text-white/20 uppercase tracking-widest">{messages.length} Total</span>
@@ -62,7 +62,15 @@ export default function InboxTab({
       </div>
 
       {/* Message Reader Panel */}
-      <div className="flex-1 overflow-y-auto bg-black/40 relative custom-scrollbar">
+      <div className={`flex-1 overflow-y-auto bg-black/40 relative custom-scrollbar ${!selectedMsg ? 'hidden md:block' : 'block'}`}>
+        {selectedMsg && (
+          <button 
+            onClick={() => setSelectedMsg(null)}
+            className="md:hidden absolute top-4 left-4 z-20 flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-bold text-white/50"
+          >
+            ← Back to Inbox
+          </button>
+        )}
         <div className="h-full p-4 md:p-8">
            <MessageDetail message={selectedMsg} onDelete={handleDelete} />
         </div>
