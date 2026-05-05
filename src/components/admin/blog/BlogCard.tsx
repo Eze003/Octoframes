@@ -72,7 +72,7 @@ export default function BlogCard({
       </div>
 
       {/* Premium Integrated Floating Actions */}
-      <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 pointer-events-auto">
+      <div className="absolute top-4 right-4 flex gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:translate-y-2 md:group-hover:translate-y-0 transition-all duration-300 pointer-events-auto">
         <button
           onClick={(e) => { e.stopPropagation(); onEdit(blog); }}
           className="w-8 h-8 rounded-full bg-primary-500 text-white flex items-center justify-center shadow-lg shadow-primary-500/40 hover:bg-primary-400 hover:scale-110 transition-all active:scale-95"
@@ -84,7 +84,7 @@ export default function BlogCard({
         </button>
         
         <button
-          onClick={(e) => { e.stopPropagation(); if(confirm('Delete this post?')) onDelete(blog.id); }}
+          onClick={(e) => { e.stopPropagation(); onDelete(blog.id); }}
           className="w-8 h-8 rounded-full bg-red-500/20 backdrop-blur-md border border-red-500/30 text-red-500 flex items-center justify-center hover:bg-red-500 hover:text-white transition-all active:scale-95"
         >
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

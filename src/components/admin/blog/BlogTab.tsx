@@ -6,6 +6,7 @@ import BlogCard from "@/components/admin/blog/BlogCard";
 import BlogFormModal from "@/components/admin/blog/BlogFormModal";
 import PortfolioSkeleton from "@/components/admin/portfolio/skeletons/PortfolioSkeleton"; // Reusing the same skeleton pattern
 import Image from "next/image";
+import DeleteModal from "@/components/admin/DeleteModal";
 
 interface BlogTabProps {
   blogs: Blog[];
@@ -22,6 +23,7 @@ export default function BlogTab({
 }: BlogTabProps) {
   const [showForm, setShowForm] = useState(false);
   const [editTarget, setEditTarget] = useState<Blog | null>(null);
+  const [deleteId, setDeleteId] = useState<number | null>(null);
 
   const openNew = () => {
     setEditTarget(null);
@@ -42,21 +44,21 @@ export default function BlogTab({
   }
 
   return (
-    <div className="p-8">
+    <div className="p-4 md:p-8">
       {/* Header */}
-      <div className="flex items-end justify-between mb-10">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6 md:gap-0">
         <div>
           <div className="text-[10px] font-black text-primary-400 uppercase tracking-[0.3em] mb-2 leading-none">
             Studio Management
           </div>
-          <h2 className="text-3xl font-black text-white tracking-tight leading-none">
+          <h2 className="text-2xl md:text-3xl font-black text-white tracking-tight leading-none">
             Blog Editorial
           </h2>
         </div>
 
         <button
           onClick={openNew}
-          className="group relative flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-black font-bold text-sm hover:bg-primary-500 hover:text-white transition-all cursor-pointer"
+          className="group relative flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white text-black font-bold text-sm hover:bg-primary-500 hover:text-white transition-all cursor-pointer w-full md:w-auto"
         >
           <span className="text-lg leading-none">+</span>
           Create New Post
@@ -66,7 +68,7 @@ export default function BlogTab({
       {/* Grid of Blog Posts */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
         {blogs.map((b) => (
-          <BlogCard key={b.id} blog={b} onEdit={openEdit} onDelete={onDelete} />
+          <BlogCard key={b.id} blog={b} onEdit={openEdit} onDelete={(id) => setDeleteId(id)} />
         ))}
 
         {blogs.length === 0 && (
@@ -98,6 +100,14 @@ export default function BlogTab({
           onSaved={onRefresh}
         />
       )}
+
+      <DeleteModal 
+        isOpen={deleteId !== null}
+        onClose={() => setDeleteId(null)}
+        onConfirm={() => deleteId && onDelete(deleteId)}
+        title="Delete Post"
+        message="Are you sure you want to permanently remove this blog post from the studio archive?"
+      />
     </div>
   );
 }

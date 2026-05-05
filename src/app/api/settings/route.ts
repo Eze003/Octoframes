@@ -7,10 +7,13 @@ export async function GET() {
     const db = await getDbConnection();
     const repo = db.getRepository(Setting);
     const settings = await repo.find();
-    
+
     // Transform to key-value object for easier frontend use
-    const config = settings.reduce((acc, s) => ({ ...acc, [s.key]: s.value }), {});
-    
+    const config = settings.reduce(
+      (acc, s) => ({ ...acc, [s.key]: s.value }),
+      {},
+    );
+
     return NextResponse.json({ settings: config });
   } catch (error) {
     console.error("Failed to fetch settings:", error);
@@ -34,12 +37,15 @@ export async function PATCH(request: Request) {
     } else {
       setting = repo.create({ key, value });
     }
-    
+
     await repo.save(setting);
 
     return NextResponse.json({ success: true, setting });
   } catch (error) {
     console.error("Failed to update setting:", error);
-    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 },
+    );
   }
 }

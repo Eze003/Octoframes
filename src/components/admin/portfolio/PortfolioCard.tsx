@@ -69,7 +69,7 @@ export default function PortfolioCard({
       </div>
 
       {/* Premium Integrated Floating Actions */}
-      <div className="absolute top-4 left-4 right-4 flex justify-between items-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 pointer-events-none">
+      <div className="absolute top-4 left-4 right-4 flex justify-between items-center opacity-100 md:opacity-0 md:group-hover:opacity-100 md:translate-y-2 md:group-hover:translate-y-0 transition-all duration-300 pointer-events-none">
         <div className="bg-black/80 backdrop-blur-xl border border-white/10 rounded-full px-3 py-1 text-[10px] text-white/60 font-bold uppercase tracking-wider">
           {portfolio.year || "2025"}
         </div>

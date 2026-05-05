@@ -61,12 +61,12 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className="p-8 max-w-4xl">
+    <div className="p-4 md:p-8 max-w-4xl">
       <div className="mb-10">
         <div className="text-[10px] font-black text-primary-400 uppercase tracking-[0.3em] mb-2 leading-none">
           Studio Management
         </div>
-        <h2 className="text-3xl font-black text-white tracking-tight leading-none">
+        <h2 className="text-2xl md:text-3xl font-black text-white tracking-tight leading-none">
           General Settings
         </h2>
       </div>
@@ -76,7 +76,7 @@ export default function SettingsPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="p-8 rounded-2xl bg-white/[0.02] border border-white/[0.06] backdrop-blur-sm"
+          className="p-4 md:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.06] backdrop-blur-sm"
         >
           <div className="flex flex-col gap-6">
             <div className="flex-1">
@@ -154,7 +154,7 @@ export default function SettingsPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="p-8 rounded-2xl bg-white/[0.01] border border-white/[0.04]"
+          className="p-4 md:p-8 rounded-2xl bg-white/[0.01] border border-white/[0.04]"
         >
           <h3 className="text-white font-bold text-sm uppercase tracking-widest mb-6">
             Integration Status
