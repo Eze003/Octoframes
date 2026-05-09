@@ -8,6 +8,7 @@ import {
 } from "framer-motion";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import Button from "@/components/ui/Button";
 import { NAVIGATION_ITEMS } from "@/constants/navigation";
@@ -63,11 +64,15 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-[88px]">
             {/* Desktop Brand (Untouched) */}
-            <div className="flex items-center gap-2.5">
-              <span className="text-white font-bold text-lg">
-                OCTO<span className="text-primary-400">FRAMES</span>
-              </span>
-            </div>
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/logo.svg"
+                alt="Octoframes Logo"
+                width={100}
+                height={100}
+                className="w-24 h-24 object-contain"
+              />
+            </Link>
 
             {/* Desktop Nav - Untouched */}
             <motion.nav
@@ -158,26 +163,15 @@ export default function Header() {
               <div className="max-w-7xl mx-auto px-6">
                 {/* Header Content INSIDE the panel */}
                 <div className="flex items-center justify-between h-[88px] border-b border-white/[0.12]">
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-lg bg-[#EA7436] flex items-center justify-center shadow-[0_0_15px_rgba(234,116,54,0.4)]">
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-white"
-                      >
-                        <polyline points="20 6 9 17 4 12" />
-                      </svg>
-                    </div>
-                    <span className="text-white font-bold text-xl tracking-tight">
-                      OCTOFRAMES
-                    </span>
-                  </div>
+                  <Link href="/" className="flex items-center">
+                    <Image
+                      src="/logo.svg"
+                      alt="Octoframes Logo"
+                      width={100}
+                      height={100}
+                      className="w-20 h-20 object-contain"
+                    />
+                  </Link>
 
                   <button
                     onClick={() => setIsOpen(false)}

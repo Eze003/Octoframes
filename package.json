@@ -4,9 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && npm run migration:run",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typeorm": "ts-node -r tsconfig-paths/register -O '{\"module\":\"commonjs\"}' ./node_modules/typeorm/cli.js",
+    "migration:show": "npm run typeorm migration:show -- -d src/lib/typeorm-cli-datasource.ts",
+    "migration:run": "npm run typeorm migration:run -- -d src/lib/typeorm-cli-datasource.ts",
+    "migration:revert": "npm run typeorm migration:revert -- -d src/lib/typeorm-cli-datasource.ts",
+    "migration:generate": "npm run typeorm migration:generate -- -d src/lib/typeorm-cli-datasource.ts"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.100.5",
@@ -28,9 +33,12 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "dotenv": "^17.4.2",
     "eslint": "^9",
     "eslint-config-next": "16.2.4",
     "tailwindcss": "^4",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5"
   }
 }

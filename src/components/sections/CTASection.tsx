@@ -16,11 +16,10 @@ export default function CTASection() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="relative w-full rounded-[32px] px-6 py-8 md:px-12 lg:px-24 lg:py-12 overflow-hidden border border-[#222] bg-[#050505] text-center flex flex-col items-center justify-center group"
         >
-          {/* Video Background Layer */}
-          <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
+          <div className="absolute inset-0 z-0 pointer-events-none opacity-60 overflow-hidden">
             <iframe
               src="https://player.cloudinary.com/embed/?cloud_name=dwumyjict&public_id=GettyImages-1144963868_pqkkkj&autoplay=true&loop=true&muted=true&controls=false"
-              className="w-full h-full scale-[1.5] object-cover"
+              className="absolute top-[-30%] left-[-35%] w-[170%] h-[120%] object-cover pointer-events-none"
               allow="autoplay; fullscreen"
               style={{ border: "none" }}
             />
@@ -62,12 +61,12 @@ export default function CTASection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-normal leading-[1.2] tracking-tight mb-6"
+              className="text-[32px] md:text-5xl lg:text-6xl font-normal leading-[1.1] tracking-tight mb-6"
             >
-              <span className="text-white text-[54px] block">
+              <span className="text-white block">
                 Ready to Elevate Your Brand
               </span>
-              <span className="text-gray-400 text-[54px] block">
+              <span className="text-gray-400 block">
                 with Next-Gen Innovation?
               </span>
             </motion.h2>
@@ -84,18 +83,6 @@ export default function CTASection() {
               your <br className="hidden sm:block" />
               vision into reality with expert support.
             </motion.p>
-
-            {/* CTA Button */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-            >
-              <Button variant="primary" size="lg">
-                Book an Appointment
-              </Button>
-            </motion.div>
           </div>
         </motion.div>
       </div>

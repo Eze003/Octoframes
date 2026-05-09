@@ -90,34 +90,6 @@ export default function PortfolioGridSection() {
                           <p className="text-white/90 text-sm md:text-[14px] font-medium">
                             {item.client}
                           </p>
-
-                          {/* Likes and Views Metrics */}
-                          <div className="flex items-center gap-3 text-white font-bold text-xs">
-                            <span className="flex items-center gap-1">
-                              <svg
-                                width="14"
-                                height="14"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path d="M1 21H5V9H1V21ZM23 10C23 8.9 22.1 8 21 8H14.68L15.64 3.43L15.67 3.11C15.67 2.7 15.5 2.32 15.23 2.05L14.17 1L7.59 7.59C7.22 7.95 7 8.45 7 9V19C7 20.1 7.9 21 9 21H18.28C19.13 21 19.86 20.48 20.18 19.71L22.86 13.47C22.95 13.22 23 12.96 23 12.69V10Z" />
-                              </svg>
-                              0
-                            </span>
-                            <span className="flex items-center gap-1">
-                              <svg
-                                width="15"
-                                height="15"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path d="M12 4.5C7 4.5 2.73 7.61 1 12C2.73 16.39 7 19.5 12 19.5C17 19.5 21.27 16.39 23 12C21.27 7.61 17 4.5 12 4.5ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z" />
-                              </svg>
-                              13
-                            </span>
-                          </div>
                         </div>
                       </div>
                     </div>

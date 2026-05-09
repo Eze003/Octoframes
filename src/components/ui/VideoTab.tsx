@@ -3,10 +3,13 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { PortfolioVideoPlayer } from "@/components/ui/PortfolioVideoPlayer";
+import { VideoModal } from "./VideoModal";
+import { BsPlayFill } from "react-icons/bs";
 
 export default function VideoTab() {
   const [text, setText] = useState("");
   const [videoUrl, setVideoUrl] = useState("/hero-videoj.mp4");
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const fullText = "Get started for free";
 
   useEffect(() => {
@@ -109,13 +112,14 @@ export default function VideoTab() {
           transform: "perspective(1200px) rotateX(10deg) scale(1.02)",
         }}
         transition={{ duration: 1.5, ease: [0.23, 1, 0.32, 1], delay: 0.5 }}
+        onClick={() => setIsModalOpen(true)}
         style={{
           transformOrigin: "center bottom",
           maskImage: "linear-gradient(to bottom, black 95%, transparent 100%)",
           WebkitMaskImage:
             "linear-gradient(to bottom, black 95%, transparent 100%)",
         }}
-        className="relative aspect-video w-full rounded-[32px] p-2 md:p-3 bg-black group z-10"
+        className="relative aspect-video w-full rounded-[32px] p-2 md:p-3 bg-black group z-10 cursor-pointer overflow-hidden"
       >
         {/* Inner Border Container */}
         <div className="relative w-full h-full rounded-3xl bg-[#050505] overflow-hidden shadow-[inset_0_0_20px_rgba(234,116,54,0.1)]">
@@ -128,11 +132,25 @@ export default function VideoTab() {
             />
           </div>
 
+          {/* Hover Play Indicator */}
+          <div className="absolute inset-0 z-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/20 backdrop-blur-[2px]">
+            <div className="w-20 h-20 rounded-full bg-primary-500 text-white flex items-center justify-center shadow-[0_0_50px_rgba(234,116,54,0.5)] scale-90 group-hover:scale-100 transition-transform duration-500">
+              <BsPlayFill size={40} className="ml-1" />
+            </div>
+          </div>
+
           {/* Subtle Overlays for depth */}
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/10 pointer-events-none z-20" />
           <div className="absolute inset-0 bg-white/[0.01] pointer-events-none z-20" />
         </div>
       </motion.div>
+
+      {/* Video Modal */}
+      <VideoModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        videoUrl={videoUrl}
+      />
     </div>
   );
 }

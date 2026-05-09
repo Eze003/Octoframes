@@ -47,7 +47,7 @@ export default function PortfolioCard({
         <div className="flex items-start justify-between gap-4">
           <div>
             <span className="text-[10px] font-bold text-primary-400 uppercase tracking-widest mb-1 block">
-              {portfolio.category}
+              {portfolio.tags?.join(", ")}
             </span>
             <h3 className="font-bold text-white text-lg tracking-tight mb-1 group-hover:text-primary-300 transition-colors">
               {portfolio.title}

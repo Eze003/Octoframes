@@ -3,6 +3,7 @@ import HeroSection from "@/app/(site)/_components/HeroSection";
 import MotionSection from "@/app/(site)/_components/MotionSection";
 import BrandsSection from "@/app/(site)/_components/BrandsSection";
 import PartnersSection from "@/app/(site)/_components/PartnersSection";
+import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import FAQSection from "@/components/sections/FAQSection";
 import CTASection from "@/components/sections/CTASection";
 
@@ -29,6 +30,7 @@ export default function Home() {
       <MotionSection />
       <BrandsSection />
       <PartnersSection />
+      <TestimonialsSection />
       <FAQSection />
       <CTASection />
     </div>

@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { Message, Portfolio, Blog } from "@/components/admin/types";
+import { Message, Portfolio, Blog, Testimonial } from "@/components/admin/types";
 
 // ─── Messages Hooks ───────────────────────────────────
 
@@ -84,6 +84,31 @@ export function useDeleteBlog() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["blogs"] });
+    },
+  });
+}
+
+// ─── Testimonial Hooks ─────────────────────────────────
+
+export function useTestimonials() {
+  return useQuery<Testimonial[]>({
+    queryKey: ["testimonials"],
+    queryFn: async () => {
+      const res = await fetch("/api/testimonials");
+      const data = await res.json();
+      return data.testimonials || [];
+    },
+  });
+}
+
+export function useDeleteTestimonial() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async (id: number) => {
+      await fetch(`/api/testimonials/${id}`, { method: "DELETE" });
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["testimonials"] });
     },
   });
 }

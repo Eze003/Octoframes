@@ -63,11 +63,8 @@ export default function HeroSection() {
           {/* Tight edge glow around bottom/sides of buttons */}
           <div className="absolute -inset-x-6 -bottom-6 top-1/2 bg-primary-500/05 blur-[30px] rounded-full -z-10" />
 
-          <Button variant="secondary" size="lg" href="/portfolio">
+          <Button variant="primary" size="lg" href="/portfolio">
             See Our Work
-          </Button>
-          <Button variant="primary" size="lg">
-            Get a Quote
           </Button>
         </motion.div>
       </div>

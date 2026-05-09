@@ -22,9 +22,9 @@ export async function GET() {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { title, category, client, year, image, content, description, services } = body;
+    const { title, tags, client, year, image, content, description, services } = body;
 
-    if (!title || !category || !client) {
+    if (!title || !client) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
@@ -33,7 +33,7 @@ export async function POST(req: Request) {
 
     const portfolio = portfolioRepository.create({
       title,
-      category,
+      tags: tags || [],
       client,
       year,
       image,
