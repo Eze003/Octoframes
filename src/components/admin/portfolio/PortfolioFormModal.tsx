@@ -19,7 +19,7 @@ export default function PortfolioFormModal({
 }: PortfolioFormModalProps) {
   const [pform, setPform] = useState({
     title: editTarget?.title ?? "",
-    category: editTarget?.category ?? "",
+    tags: editTarget?.tags ?? [],
     client: editTarget?.client ?? "",
     year: editTarget?.year ?? new Date().getFullYear().toString(),
     image: editTarget?.image ?? "",
@@ -160,17 +160,36 @@ export default function PortfolioFormModal({
                   </div>
                   <div>
                     <label className="block text-[10px] uppercase font-black tracking-widest text-white/40 mb-1.5 pl-1">
-                      Category *
+                      Tags (Enter to add) *
                     </label>
-                    <input
-                      required
-                      value={pform.category}
-                      onChange={(e) =>
-                        setPform((p) => ({ ...p, category: e.target.value }))
-                      }
-                      placeholder="e.g. Motion Graphics"
-                      className="w-full px-3 py-2.5 bg-white/[0.04] border border-white/[0.08] rounded-md text-white placeholder-gray-700 text-sm focus:outline-none focus:border-primary-500/50 transition-all font-medium"
-                    />
+                    <div className="flex flex-wrap gap-2 p-2 bg-white/[0.04] border border-white/[0.08] rounded-md min-h-[42px]">
+                      {pform.tags.map((tag, idx) => (
+                        <span key={idx} className="flex items-center gap-1 px-2 py-0.5 bg-primary-500/20 text-primary-400 text-[10px] font-bold uppercase rounded-full border border-primary-500/30">
+                          {tag}
+                          <button
+                            type="button"
+                            onClick={() => setPform(p => ({ ...p, tags: p.tags.filter((_, i) => i !== idx) }))}
+                            className="hover:text-white"
+                          >
+                            ✕
+                          </button>
+                        </span>
+                      ))}
+                      <input
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter') {
+                            e.preventDefault();
+                            const val = (e.target as HTMLInputElement).value.trim();
+                            if (val && !pform.tags.includes(val)) {
+                              setPform(p => ({ ...p, tags: [...p.tags, val] }));
+                              (e.target as HTMLInputElement).value = '';
+                            }
+                          }
+                        }}
+                        placeholder="Add tag..."
+                        className="flex-1 bg-transparent text-white placeholder-gray-700 text-sm focus:outline-none font-medium min-w-[80px]"
+                      />
+                    </div>
                   </div>
                 </div>
 

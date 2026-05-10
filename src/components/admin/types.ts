@@ -13,7 +13,7 @@ export interface Message {
 export interface Portfolio {
   id: number;
   title: string;
-  category: string;
+  tags: string[];
   client: string;
   year: string;
   image: string;
@@ -40,4 +40,14 @@ export interface ContentItem {
   type: string;
   src: string;
   span?: number; // 1 (1/3), 2 (2/3), 3 (full)
+}
+
+export interface Testimonial {
+  id: number;
+  name: string;
+  role: string;
+  content: string;
+  avatar: string;
+  rating: number;
+  createdAt: string;
 }

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 import AdminSidebar from "@/components/admin/AdminSidebar";
 import AdminAuthGuard from "@/components/admin/AdminAuthGuard";
 
@@ -26,10 +27,7 @@ export default function AdminLayoutContent({ children }: { children: React.React
           {/* Mobile Header */}
           <div className="md:hidden flex items-center justify-between p-4 border-b border-white/[0.06] bg-[#030303] sticky top-0 z-40">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center text-white font-bold text-xs">
-                O
-              </div>
-              <span className="font-bold text-sm tracking-tight text-white/90">Admin Studio</span>
+              <Image src="/logo.svg" alt="Octoframes Logo" width={80} height={80} className="w-16 h-16 object-contain" />
             </div>
             
             <button 

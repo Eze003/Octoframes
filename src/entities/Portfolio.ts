@@ -8,8 +8,8 @@ export class Portfolio {
   @Column({ type: "varchar", length: 255 })
   title!: string;
 
-  @Column({ type: "varchar", length: 100 })
-  category!: string;
+  @Column({ type: "jsonb", default: [] })
+  tags!: string[];
 
   @Column({ type: "varchar", length: 255 })
   client!: string;

@@ -90,12 +90,14 @@ export default function PortfolioDetailPage() {
               </p>
 
               <div className="flex flex-wrap gap-3 mt-8">
-                <div className="relative px-6 py-2 rounded-full border border-white/10 bg-white/5 text-[15px] text-white/80 overflow-hidden hover:bg-white/10 transition-colors backdrop-blur-sm shadow-[0_0_25px_-10px_rgba(234,116,54,0.2)]">
-                  <div className="absolute inset-0 opacity-20 pointer-events-none" style={{
-                    background: 'conic-gradient(rgba(255, 255, 255, 0.15) 0deg, rgba(255, 255, 255, 0) 72deg, rgba(234, 116, 54, 0.2) 171.892deg, rgba(255, 255, 255, 0) 270deg, rgba(255, 255, 255, 0.15) 360deg)'
-                  }} />
-                  {project.category}
-                </div>
+                {project.tags?.map((tag: string, i: number) => (
+                  <div key={i} className="relative px-6 py-2 rounded-full border border-white/10 bg-white/5 text-[15px] text-white/80 overflow-hidden hover:bg-white/10 transition-colors backdrop-blur-sm shadow-[0_0_25px_-10px_rgba(234,116,54,0.2)]">
+                    <div className="absolute inset-0 opacity-20 pointer-events-none" style={{
+                      background: 'conic-gradient(rgba(255, 255, 255, 0.15) 0deg, rgba(255, 255, 255, 0) 72deg, rgba(234, 116, 54, 0.2) 171.892deg, rgba(255, 255, 255, 0) 270deg, rgba(255, 255, 255, 0.15) 360deg)'
+                    }} />
+                    {tag}
+                  </div>
+                ))}
                 <div className="relative px-6 py-2 rounded-full border border-white/10 bg-white/5 text-[15px] text-white/80 overflow-hidden hover:bg-white/10 transition-colors backdrop-blur-sm shadow-[0_0_25px_-10px_rgba(234,116,54,0.2)]">
                   <div className="absolute inset-0 opacity-20 pointer-events-none" style={{
                     background: 'conic-gradient(rgba(255, 255, 255, 0.15) 0deg, rgba(255, 255, 255, 0) 72deg, rgba(234, 116, 54, 0.2) 171.892deg, rgba(255, 255, 255, 0) 270deg, rgba(255, 255, 255, 0.15) 360deg)'
@@ -105,51 +107,7 @@ export default function PortfolioDetailPage() {
               </div>
             </div>
 
-            {/* Right Section (Glass Card) */}
-            <div className="hidden md:flex md:w-[40%] justify-end relative group">
-              {/* Card Backlight Glows */}
-              <div className="absolute -inset-4 bg-primary-500/10 blur-[60px] rounded-full opacity-60 -z-10" />
-              {/* Atmospheric glow spanning from below to bottom-left */}
-              <div className="absolute -bottom-32 -left-20 w-[400px] h-[400px] bg-primary-500/15 blur-[100px] rounded-full pointer-events-none -z-10" />
-              
-              <div className="w-full max-w-[420px] rounded-[16px] border border-white/10 bg-white/5 backdrop-blur-sm p-8 md:p-10 hover:bg-white/10 transition-colors duration-500 relative z-10 overflow-hidden">
-                {/* Conic Gradient Overlay from HTML */}
-                <div className="absolute inset-0 opacity-20 pointer-events-none z-0" style={{
-                  background: 'conic-gradient(rgba(255, 255, 255, 0.15) 0deg, rgba(255, 255, 255, 0) 72deg, rgba(234, 116, 54, 0.2) 171.892deg, rgba(255, 255, 255, 0) 270deg, rgba(255, 255, 255, 0.15) 360deg)'
-                }} />
-                <div className="flex flex-col">
-                  {/* Services */}
-                  <div className="relative pb-6 mb-6 after:absolute after:bottom-0 after:left-0 after:w-2/3 after:h-[1px] after:bg-gradient-to-r after:from-white/10 after:to-transparent">
-                    <h4 className="text-[14px] text-white/50 mb-2 font-medium">
-                      Services
-                    </h4>
-                    <p className="text-white font-medium text-[17px]">
-                      {project.services || "Web design & Web development"}
-                    </p>
-                  </div>
 
-                  {/* Category */}
-                  <div className="relative pb-6 mb-6 after:absolute after:bottom-0 after:left-0 after:w-2/3 after:h-[1px] after:bg-gradient-to-r after:from-white/10 after:to-transparent">
-                    <h4 className="text-[14px] text-white/50 mb-2 font-medium">
-                      Category
-                    </h4>
-                    <p className="text-white font-medium text-[17px]">
-                      {project.category}
-                    </p>
-                  </div>
-
-                  {/* Client */}
-                  <div>
-                    <h4 className="text-[14px] text-white/50 mb-2 font-medium">
-                      Client
-                    </h4>
-                    <p className="text-white font-medium text-[17px]">
-                      {project.client}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </motion.div>
 

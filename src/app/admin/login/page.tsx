@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "admin123";
@@ -36,17 +37,8 @@ export default function AdminLoginPage() {
         className="relative w-full max-w-md rounded-[32px] p-2 border border-[#222] bg-black shadow-[0_0_80px_rgba(234,116,54,0.4)]"
       >
         <div className="rounded-3xl border border-primary-500/30 bg-[#050505] shadow-[inset_0_0_40px_rgba(234,116,54,0.15)] p-10">
-          {/* Logo mark */}
-          <div className="flex items-center gap-3 mb-8">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center text-white font-bold text-sm shadow-[0_0_20px_rgba(234,116,54,0.5)]">
-              O
-            </div>
-            <div>
-              <p className="text-white font-semibold text-sm leading-none">
-                Octoframes
-              </p>
-              <p className="text-white/30 text-xs mt-0.5">Admin Portal</p>
-            </div>
+          <div className="flex flex-col items-center justify-center mb-10">
+            <Image src="/logo.svg" alt="Octoframes Logo" width={160} height={160} className="w-40 h-40 object-contain" />
           </div>
 
           <h1 className="text-2xl font-bold text-white mb-1">Welcome back</h1>
