@@ -98,12 +98,6 @@ export default function PortfolioDetailPage() {
                     {tag}
                   </div>
                 ))}
-                <div className="relative px-6 py-2 rounded-full border border-white/10 bg-white/5 text-[15px] text-white/80 overflow-hidden hover:bg-white/10 transition-colors backdrop-blur-sm shadow-[0_0_25px_-10px_rgba(234,116,54,0.2)]">
-                  <div className="absolute inset-0 opacity-20 pointer-events-none" style={{
-                    background: 'conic-gradient(rgba(255, 255, 255, 0.15) 0deg, rgba(255, 255, 255, 0) 72deg, rgba(234, 116, 54, 0.2) 171.892deg, rgba(255, 255, 255, 0) 270deg, rgba(255, 255, 255, 0.15) 360deg)'
-                  }} />
-                  Portfolio
-                </div>
               </div>
             </div>
 

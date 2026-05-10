@@ -72,8 +72,8 @@ export const metadata: Metadata = {
     site: "@octoframes",
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
+    icon: "/logo.svg",
+    shortcut: "/logo.svg",
     apple: "/apple-touch-icon.png",
   },
 };
